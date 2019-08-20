@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fotomwa</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="navigation">
+    <nav class="fotomwa_navbar">
+      <a href="#section_un">Welcome</a>
+      <a href="#section_deux">Services</a>
+      <a href="#section_trois">Contacts</a>
+      <a href="#section_quarte">Sign In/Up</a>
+    </nav>
+  </div>
+    <%= yield %>
+  </body>
+</html>
