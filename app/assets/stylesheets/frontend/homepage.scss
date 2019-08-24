@@ -53,7 +53,6 @@
 
 .two {
   background-image: url('https://icdn6.digitaltrends.com/image/digitaltrends/sony-rx100-vi-review-1-1500x1000.jpg');
-
 }
 
 .three {
@@ -64,7 +63,78 @@
   background-image: url('https://o.aolcdn.com/images/dims?quality=85&image_uri=https%3A%2F%2Fo.aolcdn.com%2Fimages%2Fdims%3Fcrop%3D1799%252C1200%252C0%252C0%26quality%3D85%26format%3Djpg%26resize%3D1600%252C1067%26image_uri%3Dhttps%253A%252F%252Fs.yimg.com%252Fos%252Fcreatr-uploaded-images%252F2019-04%252F89d4fab0-5ace-11e9-b3ff-abb3f3e6fe5c%26client%3Da1acac3e1b3290917d92%26signature%3D0c47cb493c332c62ba6122bedbb77e169997a4b6&client=amp-blogside-v2&signature=03db615e6572c81b8769a9fd904e34d0d737bf17');
 }
 
-.five {
-  background-image: url('https://lh3.googleusercontent.com/proxy/lnPkWatLV0Lo76yj2OI3YUiizHSJUyZjviuBQ9jZ6WwFT-M8EDkCK1E_FIHJS1x5-HbnpWVjPZlU7pYaSWO7gEUTnVZ29Xxjb428wSaIdDfbYmGmWaiJeeAoXaIFFEKDQgWeuFxhyoxVf_M6T-x6aSBCDzljrAs=w1080-h608-p-k-no-v0');
+//Login
+.login_popup {
+  .login_trigger {
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to bottom right, #766700, #C4AC00);
+    padding: 15px 30px;
+    border-radius: 30px;
+    position: relative;
+    top: 50%
+  }
+
+  /*Modal*/
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: auto;
+    padding: 40px 10px;
+    background: #f4f7f8;
+    border-radius: 8px;
+    box-shadow: 0px 0px 30px #444;
+    align-items: center;
+    justify-content: center;
+  }
+
+  fieldset {
+    border: 0;
+  }
+
+  img {
+    position: relative;
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+    margin: 20px auto;
+    border: 3px solid #27ceaf;
+  }
+
+  input[type="text"] {
+    background: rgba(100,100,100,0.1);
+    border: none;
+    font-size: 16px;
+    outline: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #d9dbdd;
+    color: #707172;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 15px;
+    margin-top: 8px;
+    margin-right: 40px;
+    border-radius: 6px;
+  }
+
+  button {
+    font-size: 13px;
+    width: 56%;
+    border: none;
+    border-radius: 6px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #27ceaf;
+    color: white;
+  }
+
+  a {
+    font-size: 10px;
+    text-decoration: none;
+    color: #05a6c6;
+    padding-bottom: 20px;
+  }
 }
 
