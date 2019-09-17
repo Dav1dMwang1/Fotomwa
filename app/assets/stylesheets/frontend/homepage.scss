@@ -102,15 +102,14 @@
     border: 3px solid #27ceaf;
   }
 
-  input[type="text"] {
-    background: rgba(100,100,100,0.1);
+  input[type="email"], input[type="password"] {
     border: none;
     font-size: 16px;
     outline: 0;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
-    background-color: #d9dbdd;
+    background: #d9dbdd;
     color: #707172;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 15px;
@@ -119,7 +118,7 @@
     border-radius: 6px;
   }
 
-  button {
+  input[type="submit"] {
     font-size: 13px;
     width: 56%;
     border: none;

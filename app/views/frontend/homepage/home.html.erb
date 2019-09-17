@@ -26,18 +26,27 @@
   <!--Login-->
   <div class="login_popup">
     <div id="login" class="modal fade" role="dialog">
+      <p id="alert"><%= alert %></p>
       <div class="modal-dialog">
-        <form class="container">
+        <%= form_tag users_sessions_path, :class => 'container' do %>
+          <h1>Login</h1>
           <img src="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2018/04/2018-pulitzer-prize-photography-winners-announced.jpg">
           <fieldset>
-            <label for="name">Username:</label>
-            <input type="text" id="username" name="user_name"><br>
-            <label for="login">Password:</label>
-            <input type="text" id="password" name="user_password">
+            <div class="field">
+              <%= label_tag :email %>
+              <%= email_field_tag :email %>
+            </div>
+            <div class="field">
+              <%= label_tag :password %>
+              <%= password_field_tag :password %>
+            </div>
           </fieldset>
-          <button type="submit">Login</button><br>
+          <%= submit_tag "Login" %>
           <a href="#">Forgot your password?</a>
-        </form>
+          <a href=<%= new_users_user_path %>>Not a User?</a>
+          <a href="/users/auth/google_oauth2">Sign In With Google</a>
+          <a href="/users/auth/facebook">Sign In With Facebook</a>
+        <% end %>
       </div>
     </div>
 

@@ -6,7 +6,7 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -25,7 +25,22 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+# HMAC encoding and decoding
+gem 'jwt'
+# Social SignIn
+# Use Devise for authentication
+gem 'devise'
+# Use Omniauth Facebook plugin
+gem 'omniauth-facebook'
+# Use Omniauth Github plugin
+# gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
+# Use Omniauth Google plugin
+gem 'omniauth-google-oauth2'
+# Use Omniauth Twitter plugin
+# gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
+# Use ActiveRecord Sessions
+gem 'activerecord-session_store'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -48,6 +63,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'dotenv', '~> 2.2.1'
 end
 
 

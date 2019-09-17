@@ -49,8 +49,14 @@ body, html {
     text-decoration: none;
     background: #c7ad00;
     color: black;
+
 }
 
 .fotomwa_navbar a:focus {
+    text-decoration: none !important;
+}
+
+.fotomwa_navbar a:visited {
     text-decoration: none;
+    color: #f2f2f2;
 }
