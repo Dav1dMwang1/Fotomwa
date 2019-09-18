@@ -12,8 +12,11 @@
 <!--    JS-->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1/SmoothScroll.min.js' %>
+<!--    UIKit Template-->
     <%= javascript_include_tag 'application', 'https://cdn.jsdelivr.net/npm/uikit@3/dist/js/uikit-icons.min.js' %>
     <%= javascript_include_tag 'application', 'https://cdn.jsdelivr.net/npm/uikit@3/dist/js/uikit.min.js' %>
+<!--    Highcharts-->
+    <%= javascript_include_tag 'application', 'https://code.highcharts.com/highcharts.js' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,18 +25,18 @@
 
   <body>
     <div class="uk-section-primary uk-light uk-preserve-color uk-hidden@m" data-uk-sticky>
-      <nav class="uk-navbar" data-uk-navbar>
+      <nav class="uk-navbar" data-uk-navbar style="background: linear-gradient(90deg, rgba(255,159,0,1) 0%, rgba(241,120,0,1) 35%);">
         <div class="uk-navbar-left">
           <a class="uk-navbar-toggle" data-uk-navbar-toggle-icon data-uk-toggle href="#offcanvas"></a>
         </div>
         <div class="uk-navbar-center">
-          <a class="uk-navbar-item uk-logo" href="#"><span class="uk-margin-small-right" data-uk-icon="icon: uikit; ratio: 1.5"></span>Fotomwa</a>
+          <a class="uk-navbar-item uk-logo" href="#" style="color: #E30613"><span class="uk-margin-small-right" ></span>Fotomwa</a>
         </div>
         <div class="uk-navbar-right">
           <ul class="uk-navbar-nav">
             <li>
               <a href="#">
-                <img class="uk-border-circle" src="https://getuikit.com/docs/images/avatar.jpg" width="30" height="30" alt="Jane Doe">
+                <%= image_tag('users/dashboard/user.png', size: "30x30", class: "uk-border-circle uk-margin-small-right", alt: "Joe or Jane Doe") %>
               </a>
               <div class="uk-navbar-dropdown">
                 <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -49,18 +52,29 @@
       </nav>
     </div>
 
-    <header class="uk-section-primary uk-navbar-container uk-navbar-transparent uk-light uk-preserve-color uk-visible@m" data-uk-sticky>
+    <header class="uk-section-primary uk-navbar-container uk-navbar-transparent uk-light uk-preserve-color uk-visible@m" data-uk-sticky style="background: linear-gradient(90deg, rgba(255,159,0,1) 0%, rgba(241,120,0,1) 35%);">
       <div class="uk-container uk-container-expand">
         <nav class="uk-navbar" data-uk-navbar>
           <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="#" ><span style="padding: 7.5px"><%= image_tag('frontend/camera.png', size: "30x30") %></span>Fotomwa</a>
+            <a class="uk-navbar-item uk-logo" href="#" style="color: #E30613"><span style="padding: 7.5px"><%= image_tag('frontend/camera.png', size: "30x30") %></span>Fotomwa</a>
           </div>
           <div class="uk-navbar-right">
             <div class="uk-grid uk-grid-small uk-grid-divider" data-uk-grid>
               <div>
                 <ul class="uk-navbar-nav uk-grid uk-grid-collapse">
                   <li>
-                    <a class="uk-navbar-item" href="#"><span><%= image_tag('users/dashboard/search_icon.png', size: "25x25") %></span></a>
+                    <div class="uk-navbar-right">
+                      <div>
+                        <a class="uk-navbar-toggle" href="#"><%= image_tag('users/dashboard/search_icon.png', size: "25x25") %></a>
+                        <div class="uk-drop" uk-drop = "mode: click; pos: left-center; offset:0">
+                          <form class="uk-search uk-search-navbar uk-width-1-1">
+                            <label>
+                              <input class="uk-search-input" type="search" placeholder="Search..." autofocus style="color: #111111;">
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                   <li>
                     <a class="uk-navbar-item" href="#"><span><%= image_tag('users/dashboard/mail.png', size: "25x25") %></span></a>
@@ -74,7 +88,7 @@
                 <ul class="uk-navbar-nav">
                   <li>
                     <a class="uk-navbar-item" href="#">
-                      <div>
+                      <div style="color: #111111">
                         <%= image_tag('users/dashboard/user.png', size: "30x30", class: "uk-border-circle uk-margin-small-right", alt: "Joe or Jane Doe") %>
                         <span class="uk-text-middle">User Name</span>
                       </div>
@@ -98,7 +112,7 @@
 
     <div class="uk-grid-collapse uk-grid-item-match" data-uk-grid>
       <aside class="uk-width-medium uk-position-relative uk-position-z-index uk-visible@m">
-        <div class="uk-section-secondary uk-width-medium uk-height-small uk-position-fixed uk-overflow-auto" data-uk-height-viewport="offset-top: true">
+        <div class="uk-section-secondary uk-width-medium uk-height-small uk-position-fixed uk-overflow-auto" data-uk-height-viewport="offset-bottom: false">
           <%= @all_content %>
           <hr class="uk-hr uk-margin-remove">
           <div class="uk-tile uk-tile-xsmall">
@@ -113,77 +127,7 @@
 
     <div id="offcanvas" data-uk-offcanvas>
       <div class="uk-offcanvas-bar">
-        <div class="uk-panel">
-          <ul class="uk-nav-default uk-nav-parent-icon" data-uk-nav>
-            <li class="uk-active"><a href="#"><span></span>Customers Dashboard</a></li>
-            <li class="uk-parent">
-              <a href="#"><span></span>Menu</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-            <li class="uk-parent">
-              <a href="#"><span></span>Menu</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-            <li class="uk-parent">
-              <a href="#"><span></span>Menu</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <hr>
-        <div class="uk-panel">
-          <ul class="uk-nav-default uk-nav-parent-icon" data-uk-nav>
-            <li class="uk-parent">
-              <a href="#"><span></span>Menu</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-            <li class="uk-parent">
-              <a href="#"><span></span>Menu</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-            <li class="uk-parent">
-              <a href="#"><span></span>Почта</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <hr>
-        <div class="uk-panel">
-          <ul class="uk-nav-default uk-nav-parent-icon" data-uk-nav>
-            <li class="uk-parent">
-              <a href="#"><span></span>Settings</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-            <li class="uk-parent">
-              <a href="#"><span></span>Trash</a>
-              <ul class="uk-nav-sub">
-                <li><a href="#">Sub item</a></li>
-                <li><a href="#">Sub item</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        <%= @all_content %>
       </div>
     </div>
   </body>
