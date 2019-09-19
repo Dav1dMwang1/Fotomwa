@@ -32,3 +32,6 @@
 
 # .idea folders
 /.idea
+
+# Google Oauth ID and Secret
+/config/beauty_secrets.yml

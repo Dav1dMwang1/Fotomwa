@@ -13,35 +13,3 @@
  *= require_tree .
  *= require_self
  */
-body, html {
-    height: 100%;
-    margin: 0;
-    font-size: 16px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    line-height: 1.8em;
-    color: #666;
-}
-
-.fotomwa_navbar {
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-.fotomwa_navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-.fotomwa_navbar a:hover {
-    background: #ddd;
-    color: black;
-}
