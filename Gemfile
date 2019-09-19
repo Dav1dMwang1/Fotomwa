@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 # Social SignIn
 # Use Devise for authentication
-gem 'devise'
+gem 'devise', ">= 4.7.1"
 # Use Omniauth Facebook plugin
 gem 'omniauth-facebook'
 # Use Omniauth Github plugin
