@@ -1,12 +1,19 @@
 module Users
-  class DashboardController < ApplicationController
-    layout 'dashboard/application'
-    attr_writer :all_content
-    def index
-    end
+  module Dashboard
+    class DashboardController < ApplicationController
+      layout 'dashboard/application'
 
-    def dashboard_content
-      "
+      before_action :authenticate_user!, except: [:index]
+      before_action :user_signed_in?
+
+      attr_writer :all_content
+
+      def index
+        render 'users/dashboard/index'
+      end
+
+      def dashboard_content
+        "
       <div class='uk-tile uk-tile-xsmall'>
         #{sub_section_one}
       </div>
@@ -19,10 +26,10 @@ module Users
         #{sub_section_three}
       </div>
       ".html_safe
-    end
+      end
 
-    def sub_section_one
-      "
+      def sub_section_one
+        "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Profile Information</a></li>
           <li class='uk-parent'>
@@ -39,14 +46,15 @@ module Users
               </li>
           </ul>
           "
-    end
+      end
 
-    def sub_section_two
+      def sub_section_two
 
-    end
+      end
 
-    def sub_section_three
+      def sub_section_three
 
+      end
     end
   end
 end

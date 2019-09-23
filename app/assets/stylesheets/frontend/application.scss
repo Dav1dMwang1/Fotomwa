@@ -33,9 +33,9 @@ body, html {
     position: fixed;
     top: 0;
     width: 100%;
-}
 
-.fotomwa_navbar a {
+
+  a {
     float: left;
     display: block;
     color: #f2f2f2;
@@ -43,20 +43,23 @@ body, html {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-}
+  }
 
-.fotomwa_navbar a:hover {
+  a:hover {
     text-decoration: none;
     background: #c7ad00;
     color: black;
 
-}
+  }
 
-.fotomwa_navbar a:focus {
+  a:focus {
     text-decoration: none !important;
-}
+  }
 
-.fotomwa_navbar a:visited {
+  a:visited {
     text-decoration: none;
     color: #f2f2f2;
+  }
 }
+
+

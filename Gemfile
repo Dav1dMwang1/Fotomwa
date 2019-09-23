@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # HMAC encoding and decoding
 gem 'jwt'
+
 # Social SignIn
 # Use Devise for authentication
 gem 'devise', ">= 4.7.1"
@@ -36,9 +37,10 @@ gem 'omniauth-facebook'
 # Use Omniauth Github plugin
 # gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
 # Use Omniauth Google plugin
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '~> 0.2.2'
 # Use Omniauth Twitter plugin
 # gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
+#
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store'
 
