@@ -28,24 +28,54 @@
     <div id="login" class="modal fade" role="dialog">
       <p id="alert"><%= alert %></p>
       <div class="modal-dialog">
-        <%= form_tag users_sessions_path, :class => 'container' do %>
+        <%#= form_tag user_session_path, class: 'container' do %>
+<!--          <h1>Login</h1>-->
+          <%#= image_tag('frontend/team.png', class: 'login_logo') %>
+<!--          <fieldset>-->
+<!--            <div class="field">-->
+              <%#= label_tag :email %>
+              <%#= email_field_tag :email %>
+<!--            </div>-->
+<!--            <div class="field">-->
+              <%#= label_tag :password %>
+              <%#= password_field_tag :password %>
+<!--            </div>-->
+<!--          </fieldset>-->
+          <%#= submit_tag "Login" %>
+<!--          <a href="#">Forgot your password?</a>-->
+<!--          <div class="social_logos">-->
+<!--            <a href="<%#=  %>"><%#= image_tag('frontend/google.png', size: '30x30', alt: 'Sign In With Google', class: 'fo_logos_google') %></a><br>-->
+<!--            <a href="<%#= user_facebook_omniauth_callback_path %>"><%#= image_tag('frontend/facebook.png', size: '30x30', alt: 'Sign In With Facebook', class: 'fo_logos_fb') %></a>-->
+<!--          </div>-->
+        <%# end %>
+        <%#= render "users/shared/links" %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'container'}) do |f| %>
           <h1>Login</h1>
-          <img src="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2018/04/2018-pulitzer-prize-photography-winners-announced.jpg">
+          <%= image_tag('frontend/team.png', class: 'login_logo') %>
           <fieldset>
             <div class="field">
-              <%= label_tag :email %>
-              <%= email_field_tag :email %>
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
             <div class="field">
-              <%= label_tag :password %>
-              <%= password_field_tag :password %>
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
             </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
           </fieldset>
-          <%= submit_tag "Login" %>
-          <a href="#">Forgot your password?</a>
-          <a href=<%= new_users_user_path %>>Not a User?</a>
-          <a href="/users/auth/google_oauth2">Sign In With Google</a>
-          <a href="/users/auth/facebook">Sign In With Facebook</a>
+          <div class="actions">
+            <%= f.submit "Log in" %>
+          </div>
+          <div class="social_logos">
+            <a href="<%=  %>"><%= image_tag('frontend/google.png', size: '30x30', alt: 'Sign In With Google', class: 'fo_logos_google') %></a><br>
+            <a href="<%= user_facebook_omniauth_callback_path %>"><%= image_tag('frontend/facebook.png', size: '30x30', alt: 'Sign In With Facebook', class: 'fo_logos_fb') %></a>
+            <%= render "users/shared/links" %>
+          </div>
         <% end %>
       </div>
     </div>
