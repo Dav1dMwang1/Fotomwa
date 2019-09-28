@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_192551) do
+ActiveRecord::Schema.define(version: 2019_09_21_120234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "order_no"
+    t.string "order_type"
+    t.integer "price"
+    t.string "instructions"
+    t.time "processing_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.bigint "order_id"
+    t.string "photo_type"
+    t.string "photo_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_photos_on_order_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
@@ -41,7 +62,11 @@ ActiveRecord::Schema.define(version: 2019_09_04_192551) do
     t.string "last_name"
     t.string "email"
     t.string "phone"
-    t.boolean "admin"
+    t.boolean "staff"
+    t.string "token"
+    t.boolean "expires"
+    t.integer "expires_at"
+    t.string "refresh_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false

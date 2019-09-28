@@ -1,28 +1,29 @@
-class Users::SessionsController < Devise::SessionsController
-  def new
-  end
+# frozen_string_literal: true
+module Users
+  class SessionsController < Devise::SessionsController
+    before_action :configure_sign_in_params, only: [:create]
 
-  def manual_create
-    @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to "/users/#{session[:user_id]}", notice: "Logged In!"
-    else
-      flash.now[:alert] = "Email or password is invalid"
-      render "new"
+    # GET /resource/sign_in
+    def new
+      super
+    end
+
+    # POST /resource/sign_in
+    def create
+      super
+    end
+
+    # DELETE /resource/sign_out
+    def destroy
+      super
+    end
+
+    protected
+
+    # If you have extra params to permit, append them to the sanitizer.
+    def configure_sign_in_params
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
     end
   end
 
-  def create
-    # resource = warden.authenticate!(scope: resource_name)
-    @user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
-    session[:user_id] = @user.id
-    # redirect_to "/users/#{session[:user_id]}"
-    respond_with resource
-  end
-
-  def destroy
-    session[:user_id] = nil
-    redirect_to root_path, notice: "Logged Out"
-  end
 end

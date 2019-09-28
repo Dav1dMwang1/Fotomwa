@@ -3,8 +3,7 @@ module Users
     module Customers
       class CustomerDashboardController < DashboardController
         def customer
-          @all_content = customer_content
-          render 'users/dashboard/customers/customer', locals: {customer_content: @all_content}
+          render 'users/dashboard/customers/customer', locals: { customer_content: @all_content = dashboard_content }
         end
 
         def sub_section_two
@@ -48,21 +47,22 @@ module Users
           <li><a href='#'>Payments Information</a></li>
           </ul>
               </li>
-          <li class='uk-parent'>
-          <a href='#'><span></span>Help</a>
-          <ul class='uk-nav-sub'>
-          <li><a href='#'>FAQ</a></li>
-          <li><a href='#'>Legal Agreements</a></li>
-          </ul>
-              </li>
           </ul>
           "
         end
 
         def sub_section_three
           "
-          <ul class='uk-nav-default' data-uk-nav>
-              <li><a href='#'><span></span>Log Out</a></li>
+          <ul class='uk-nav-default  uk-nav-parent-icon' data-uk-nav>
+              <li class='uk-active'><a href='#'><span></span>Photo Information</a></li>
+              <li><a href='#'><span></span>Gallery</a></li>
+              <li class='uk-parent'>
+                <a href='#'><span></span>Help</a>
+                <ul class='uk-nav-sub'>
+                <li><a href='#'>FAQ</a></li>
+                <li><a href='#'>Legal Agreements</a></li>
+                </ul>
+                    </li>
           </ul>
           "
         end
