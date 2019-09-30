@@ -10,18 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_120234) do
+ActiveRecord::Schema.define(version: 2019_09_30_164929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.integer "amount"
+    t.string "description"
+    t.integer "processing_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id", unique: true
+    t.index ["product_id"], name: "index_order_products_on_product_id", unique: true
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "order_no"
-    t.string "order_type"
-    t.integer "price"
-    t.string "instructions"
-    t.time "processing_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -34,6 +53,17 @@ ActiveRecord::Schema.define(version: 2019_09_21_120234) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_photos_on_order_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "brand_id"
+    t.string "name"
+    t.integer "unit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -79,4 +109,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_120234) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
+  add_foreign_key "products", "categories"
 end
