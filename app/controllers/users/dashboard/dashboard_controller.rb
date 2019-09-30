@@ -9,7 +9,11 @@ module Users
       attr_writer :all_content
 
       def index
-        render 'users/dashboard/index'
+        if current_user.user_role.eql?('Customer')
+          redirect_to users_customers_path
+        else
+          redirect_to users_admin_path
+        end
       end
 
       def dashboard_content

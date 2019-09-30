@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   namespace :users do
     # Dashboard Views
     get '', to: 'dashboard/dashboard#index'
-    get 'customers', to: 'dashboard/customers/customer_dashboard#customer', as: :customer_dashboard
-    get 'admin', to: 'dashboard/admin/admin_dashboard#admin', as: :admin_dashboard
-    resources :orders
+    get 'customers', to: 'dashboard/customers/customer_dashboard#customer', as: :customers
+    get 'admin', to: 'dashboard/admin/admin_dashboard#admin', as: :admin
+    # resources :orders
   end
 
 end

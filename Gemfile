@@ -38,14 +38,10 @@ gem 'jwt'
 # Social SignIn
 # Use Devise for authentication
 gem 'devise', ">= 4.7.1"
-# Use Omniauth Facebook plugin
+# Use FacebookOauth plugin
 gem 'omniauth-facebook'
-# Use Omniauth Github plugin
-# gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
-# Use Omniauth Google plugin
+# Use GoogleOauth2 plugin
 gem 'omniauth-google-oauth2', '~> 0.2.2'
-# Use Omniauth Twitter plugin
-# gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
 #
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store'

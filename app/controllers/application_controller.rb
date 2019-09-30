@@ -6,32 +6,6 @@ class ApplicationController < ActionController::Base
   # skip_before_filter :verify_authenticity_token
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # helper_method :after_sign_in_path_for, :authenticate_user!, :current_user, :new_session_path, :user_signed_in?
-
-  def authenticate_user!
-    redirect_to root_url unless user_signed_in?
-  end
-
-  def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    else
-      @current_user = nil
-    end
-  end
-
-  def user_signed_in?
-    !!current_user
-  end
-  #
-  # def new_session_path(scope)
-  #   new_user_session_path
-  # end
-
-  # def after_sign_in_path_for(resource)
-  #   stored_location_for(resource) || '/users/customers'
-  # end
-
   private
 
   def cors_set_access_control_headers
