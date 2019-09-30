@@ -28,27 +28,6 @@
     <div id="login" class="modal fade" role="dialog">
       <p id="alert"><%= alert %></p>
       <div class="modal-dialog">
-        <%#= form_tag user_session_path, class: 'container' do %>
-<!--          <h1>Login</h1>-->
-          <%#= image_tag('frontend/team.png', class: 'login_logo') %>
-<!--          <fieldset>-->
-<!--            <div class="field">-->
-              <%#= label_tag :email %>
-              <%#= email_field_tag :email %>
-<!--            </div>-->
-<!--            <div class="field">-->
-              <%#= label_tag :password %>
-              <%#= password_field_tag :password %>
-<!--            </div>-->
-<!--          </fieldset>-->
-          <%#= submit_tag "Login" %>
-<!--          <a href="#">Forgot your password?</a>-->
-<!--          <div class="social_logos">-->
-<!--            <a href="<%#=  %>"><%#= image_tag('frontend/google.png', size: '30x30', alt: 'Sign In With Google', class: 'fo_logos_google') %></a><br>-->
-<!--            <a href="<%#= user_facebook_omniauth_callback_path %>"><%#= image_tag('frontend/facebook.png', size: '30x30', alt: 'Sign In With Facebook', class: 'fo_logos_fb') %></a>-->
-<!--          </div>-->
-        <%# end %>
-        <%#= render "users/shared/links" %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'container'}) do |f| %>
           <h1>Login</h1>
           <%= image_tag('frontend/team.png', class: 'login_logo') %>
@@ -68,9 +47,7 @@
               </div>
             <% end %>
           </fieldset>
-          <div class="actions">
-            <%= f.submit "Log in" %>
-          </div>
+          <%= f.submit "Log in" %>
           <div class="social_logos">
             <a href="<%=  %>"><%= image_tag('frontend/google.png', size: '30x30', alt: 'Sign In With Google', class: 'fo_logos_google') %></a><br>
             <a href="<%= user_facebook_omniauth_callback_path %>"><%= image_tag('frontend/facebook.png', size: '30x30', alt: 'Sign In With Facebook', class: 'fo_logos_fb') %></a>

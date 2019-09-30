@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :email, unique: true
       t.string :phone
-      t.boolean :staff
+      t.string :user_role, default: 'Customer'
 
       t.string :token
       t.boolean :expires

@@ -44,17 +44,6 @@ ActiveRecord::Schema.define(version: 2019_09_21_120234) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "test_auths", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "uid", limit: 50, default: "", null: false
     t.string "provider", limit: 500, default: "", null: false
@@ -62,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_120234) do
     t.string "last_name"
     t.string "email"
     t.string "phone"
-    t.boolean "staff"
+    t.string "user_role", default: "Customer"
     t.string "token"
     t.boolean "expires"
     t.integer "expires_at"

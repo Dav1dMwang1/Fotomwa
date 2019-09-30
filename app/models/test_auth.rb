@@ -1,2 +1,0 @@
-class TestAuth < ApplicationRecord
-end
