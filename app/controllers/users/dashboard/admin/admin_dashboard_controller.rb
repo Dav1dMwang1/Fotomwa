@@ -21,34 +21,26 @@ module Users
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Order Information</a></li>
           <li class='uk-parent'>
-          <a href='#'><span></span>Studio Photos</a>
+          <a href='#'><span></span>Categories</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#'>Passport</a></li>
-          <li><a href='#'>4R - 6R</a></li>
-          <li><a href='#'>8R & 8L</a></li>
-          <li><a href='#'>11R</a></li>
-          <li><a href='#'>Custom</a></li>
+          <li><a href='#{users_admin_categories_path}'>All Categories</a></li>
+          <li><a href='#{new_users_admin_category_path}'>New Category</a></li>
           </ul>
               </li>
           <li class='uk-parent'>
-          <a href='#'><span></span>Track Photos</a>
+          <a href='#'><span></span>Brands</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#'>Passport</a></li>
-          <li><a href='#'>4R - 6R</a></li>
-          <li><a href='#'>8R & 8L</a></li>
-          <li><a href='#'>11R</a></li>
-          <li><a href='#'>Custom</a></li>
+          <li><a href='#{users_admin_brands_path}'>All Brands</a></li>
+          <li><a href='#{new_users_admin_brand_path}'>New Brand</a></li>
           </ul>
               </li>
           <li class='uk-parent'>
           <a href='#'><span></span>Products</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#'>Frames</a></li>
-          <li><a href='#'>Cameras</a></li>
-          <li><a href='#'>Accessories</a></li>
+          <li><a href='#{users_admin_products_path}'>All Products</a></li>
+          <li><a href='#{new_users_admin_product_path}'>New Product</a></li>
           </ul>
               </li>
-          <li><a href='#'><span></span>Bookings</a></li>
           </ul>
           "
         end
@@ -73,7 +65,6 @@ module Users
           </ul>
           "
         end
-
 
       end
     end

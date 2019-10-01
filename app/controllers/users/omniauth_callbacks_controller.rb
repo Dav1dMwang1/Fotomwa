@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module Users
+module User
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You should configure your model like this:
     # devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
@@ -10,7 +10,7 @@ module Users
       if @user.persisted?
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
-        # redirect_to '/users/customers'
+        # redirect_to '/user/customers'
         # flash[:success] = 'Successful Login Through Google OAuth!'
       else
         session['devise.google_data'] = request.env['omniauth.auth']
@@ -24,7 +24,7 @@ module Users
       if @user.persisted?
         sign_in @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
-        redirect_to '/users'
+        redirect_to '/user'
         # flash[:success] = 'Successful Login Through Facebook OAuth!'
       else
         session['devise.google_data'] = request.env['omniauth.auth']
@@ -41,7 +41,7 @@ module Users
       super
     end
 
-    # GET|POST /users/auth/twitter/callback
+    # GET|POST /user/auth/twitter/callback
     def failure
       super
       # flash[:error] = 'There was a problem signing you in. Please register or try signing in later.'

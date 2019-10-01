@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_164929) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "user", force: :cascade do |t|
     t.string "uid", limit: 50, default: "", null: false
     t.string "provider", limit: 500, default: "", null: false
     t.string "first_name"

@@ -3,16 +3,19 @@ module Users
     class DashboardController < ApplicationController
       layout 'dashboard/application'
 
-      before_action :authenticate_user!, except: [:index]
+      before_action :authenticate_user!
       before_action :user_signed_in?
 
       attr_writer :all_content
 
+      # Reroutes to the correct user dashboard
       def index
         if current_user.user_role.eql?('Customer')
-          redirect_to users_customers_path
+          redirect_to users_customers_root_path
+        elsif current_user.user_role.eql?('Administrator')
+          redirect_to users_admin_root_path
         else
-          redirect_to users_admin_path
+          redirect_to root_path
         end
       end
 
@@ -52,13 +55,9 @@ module Users
           "
       end
 
-      def sub_section_two
+      def sub_section_two; end
 
-      end
-
-      def sub_section_three
-
-      end
+      def sub_section_three;end
     end
   end
 end

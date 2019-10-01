@@ -1,0 +1,17 @@
+<main class="uk-width-expand uk-position-relative">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Product Name:</strong>
+    <%= @product.name %>
+  </p>
+
+  <p>
+    <strong>Product Unit Price:</strong>
+    <%= @product.unit_price %>
+  </p>
+
+  <%= link_to 'Edit', edit_users_admin_product_path(@product) %> |
+  <%= link_to 'Back', users_admin_product_path %>
+
+</main>
