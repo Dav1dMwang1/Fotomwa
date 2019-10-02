@@ -59,7 +59,7 @@ module Users
         def destroy
           @category.destroy
           respond_to do |format|
-            format.html { redirect_to admin_categories_url, notice: 'Category was successfully destroyed.' }
+            format.html { redirect_to user_admin_category_url, notice: 'Category was successfully destroyed.' }
             format.json { head :no_content }
           end
         end

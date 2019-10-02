@@ -59,7 +59,7 @@ module Users
         def destroy
           @brand.destroy
           respond_to do |format|
-            format.html { redirect_to admin_brand_url, notice: 'Brand was successfully destroyed.' }
+            format.html { redirect_to user_admin_brand_url, notice: 'Brand was successfully destroyed.' }
             format.json { head :no_content }
           end
         end

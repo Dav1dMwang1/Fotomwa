@@ -60,7 +60,7 @@ module Users
         def destroy
           @product.destroy
           respond_to do |format|
-            format.html { redirect_to admin_product_url, notice: 'Product was successfully destroyed.' }
+            format.html { redirect_to user_admin_product_url, notice: 'Product was successfully destroyed.' }
             format.json { head :no_content }
           end
         end
