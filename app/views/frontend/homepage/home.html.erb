@@ -47,9 +47,9 @@
               </div>
             <% end %>
           </fieldset>
-          <%= f.submit "Log in" %>
+          <%= f.submit "Log in" %><br><br><br>
           <div class="social_logos">
-            <a href="<%= omniauth_authorize_path(resource_name, 'google_oauth2') %>"><%= image_tag('frontend/google.png', size: '30x30', alt: 'Sign In With Google', class: 'fo_logos_google') %></a><br>
+<!--            <a href="<%#= omniauth_authorize_path(resource_name, 'google_oauth2') %>"><%#= image_tag('frontend/google.png', size: '30x30', alt: 'Sign In With Google', class: 'fo_logos_google') %></a><br>-->
             <a href="<%= omniauth_authorize_path(resource_name, 'facebook')  %>"><%= image_tag('frontend/facebook.png', size: '30x30', alt: 'Sign In With Facebook', class: 'fo_logos_fb') %></a>
           </div><br>
           <%= render "users/shared/links" %>

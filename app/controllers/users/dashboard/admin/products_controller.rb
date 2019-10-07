@@ -8,6 +8,7 @@ module Users
         # GET /products
         # GET /products.json
         def index
+          @all_content = dashboard_content
           @products = Product.all
         end
 

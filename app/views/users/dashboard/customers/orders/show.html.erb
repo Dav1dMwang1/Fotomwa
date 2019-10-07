@@ -2,11 +2,54 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>Brand Name:</strong>
-    <%= @brand.name %>
+    <strong>Order Category:</strong>
+  </p>
+  <p>
+    <%= @category_details.name %>
+  </p>
+
+  <p>
+    <strong>Order Brand:</strong>
+  </p>
+  <p>
+    <%= @brand_details.name %>
+  </p>
+
+  <p>
+    <strong>Order Product:</strong>
+  </p>
+  <p>
+    <%= @product_details.name %>
+  </p>
+
+  <p>
+    <strong>Order Amount:</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= order_detail.amount%>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Order Description:</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= order_detail.description%>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Time to Process Order:</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= convert_seconds(order_detail.processing_time)%>
+    <% end %>
   </p>
 
   <%= link_to 'Edit', edit_users_customers_order_path(@order) %> |
-  <%= link_to 'Back', users_customers_order_path %>
+  <%= link_to 'Back', users_customers_orders_path %>
 
 </main>

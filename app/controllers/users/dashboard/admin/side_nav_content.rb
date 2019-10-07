@@ -1,23 +1,16 @@
-module Users
-  module Dashboard
-    module Admin
-      class AdminDashboardController < DashboardController
-        def admin
-          render 'users/dashboard/admin/admin', locals: { admin_content: @all_content = dashboard_content }
-        end
-
-        def dashboard_content
-          super +
-          "
+module AdminSideNavContent
+  def dashboard_content
+    super +
+        "
             <hr class='uk-hr uk-margin-remove'>
           <div class='uk-tile uk-tile-xsmall'>
             #{sub_section_four}
           </div>
           ".html_safe
-        end
+  end
 
-        def sub_section_two
-          "
+  def sub_section_two
+    "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Order Information</a></li>
           <li class='uk-parent'>
@@ -43,10 +36,10 @@ module Users
               </li>
           </ul>
           "
-        end
+  end
 
-        def sub_section_three
-          "
+  def sub_section_three
+    "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Awaiting</a></li>
           <li><a href='#'><span></span>To be Taken</a></li>
@@ -54,20 +47,15 @@ module Users
           <li><a href='#'><span></span>Products</a></li>
           </ul>
           "
-        end
+  end
 
-        def sub_section_four
-          "
+  def sub_section_four
+    "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Business Information</a></li>
           <li><a href='#'><span></span>Stock Information</a></li>
           <li><a href='#'><span></span>Staff Information</a></li>
           </ul>
           "
-        end
-
-      end
-    end
   end
 end
-

@@ -34,6 +34,10 @@ gem 'sidekiq'
 gem 'bcrypt', '~> 3.1.7'
 # HMAC encoding and decoding
 gem 'jwt'
+# Image Compression
+gem 'piet'
+gem 'image_optim'
+gem 'mini_magick'
 
 # Social SignIn
 # Use Devise for authentication
@@ -41,8 +45,8 @@ gem 'devise', ">= 4.7.1"
 # Use FacebookOauth plugin
 gem 'omniauth-facebook'
 # Use GoogleOauth2 plugin
-gem 'omniauth-google-oauth2', '~> 0.2.2'
-#
+gem 'omniauth-google-oauth2'
+gem 'omniauth-oauth2'
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store'
 

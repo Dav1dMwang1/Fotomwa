@@ -7,6 +7,7 @@ module Users
         # GET /categories
         # GET /categories.json
         def index
+          @all_content = dashboard_content
           @categories = Category.all
         end
 

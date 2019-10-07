@@ -7,11 +7,12 @@
     <thead>
     <tr>
       <th>Order ID</th>
-      <th>Category</th>
-      <th>Brand</th>
+<!--      <th>Category</th>-->
+<!--      <th>Brand</th>-->
+<!--      <th>Product</th>-->
       <th>Amount</th>
-      <th>Description</th>
-      <th>Processing Time</th>
+      <th>Order Description</th>
+      <th>Time to Process</th>
       <th colspan="3"></th>
     </tr>
     </thead>
@@ -20,14 +21,18 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.id %></td>
-<!--        <td><%#= order.name %></td>-->
-<!--        <td><%#= order.name %></td>-->
-<!--        <td><%#= order.name %></td>-->
-<!--        <td><%#= order.name %></td>-->
-<!--        <td><%#= order.name %></td>-->
-        <td><%= link_to 'Show', users_customer_order_path(order) %></td>
+        <% order.order_products.each do |order_details| %>
+<!--          <td><%#= 'Category' %></td>-->
+<!--          <td><%#= 'Brand' %></td>-->
+<!--          <td><%#= 'Product' %></td>-->
+          <td><%= order_details.amount %></td>
+          <td><%= order_details.description %></td>
+          <td><%= convert_seconds(order_details.processing_time) %></td>
+
+        <% end %>
+        <td><%= link_to 'Show', users_customers_order_path(order) %></td>
         <td><%= link_to 'Edit', edit_users_customers_order_path(order) %></td>
-        <td><%= link_to 'Destroy', users_customer_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', users_customers_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </tbody>

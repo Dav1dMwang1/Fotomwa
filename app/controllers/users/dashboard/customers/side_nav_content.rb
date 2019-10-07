@@ -1,13 +1,6 @@
-module Users
-  module Dashboard
-    module Customers
-      class CustomerDashboardController < DashboardController
-        def customer
-          render 'users/dashboard/customers/customer', locals: { customer_content: @all_content = dashboard_content }
-        end
-
-        def sub_section_one
-          "
+module CustomerSideNavContent
+  def sub_section_one
+    "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Profile Information</a></li>
           <li class='uk-parent'>
@@ -26,10 +19,10 @@ module Users
               </li>
           </ul>
           "
-        end
+  end
 
-        def sub_section_two
-          "
+  def sub_section_two
+    "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Service Information</a></li>
           <li class='uk-parent'>
@@ -49,10 +42,10 @@ module Users
               </li>
           </ul>
           "
-        end
+  end
 
-        def sub_section_three
-          "
+  def sub_section_three
+    "
           <ul class='uk-nav-default  uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Photo Information</a></li>
               <li><a href='#'><span></span>Gallery</a></li>
@@ -65,8 +58,5 @@ module Users
                     </li>
           </ul>
           "
-        end
-      end
-    end
   end
 end

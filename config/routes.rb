@@ -18,12 +18,14 @@ Rails.application.routes.draw do
     scope module: 'dashboard' do
       get '', to: 'dashboard#index'
       namespace :admin do
-        root to: 'admin_dashboard#admin'
+        root to: 'admin_dashboard#index'
         resources :brands,  :products,  :categories
       end
       namespace :customers do
-        root to: 'customer_dashboard#customer'
-        resources :orders
+        root to: 'customer_dashboard#index'
+        resources :orders do
+          # resource :photos
+        end
       end
     end
   end

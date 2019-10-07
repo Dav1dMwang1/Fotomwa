@@ -1,26 +1,25 @@
 module Users
-  module Dashboard
-    class DashboardController < ApplicationController
-      layout 'dashboard/application'
+  class DashboardController < ApplicationController
+    layout 'dashboard/application'
 
-      before_action :authenticate_user!
-      before_action :user_signed_in?
+    # before_action :authenticate_user!
+    # before_action :user_signed_in?
 
-      attr_writer :all_content
+    attr_writer :all_content
 
-      # Reroutes to the correct user dashboard
-      def index
-        if current_user.user_role.eql?('Customer')
-          redirect_to users_customers_root_path
-        elsif current_user.user_role.eql?('Administrator')
-          redirect_to users_admin_root_path
-        else
-          redirect_to root_path
-        end
+    # Reroutes to the correct user dashboard
+    def index
+      if current_user.user_role.eql?('Customer')
+        redirect_to users_customers_root_path
+      elsif current_user.user_role.eql?('Administrator')
+        redirect_to users_admin_root_path
+      else
+        redirect_to root_path
       end
+    end
 
-      def dashboard_content
-        "
+    def dashboard_content
+      "
       <div class='uk-tile uk-tile-xsmall'>
         #{sub_section_one}
       </div>
@@ -33,10 +32,10 @@ module Users
         #{sub_section_three}
       </div>
       ".html_safe
-      end
+    end
 
-      def sub_section_one
-        "
+    def sub_section_one
+      "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Profile Information</a></li>
           <li class='uk-parent'>
@@ -53,11 +52,10 @@ module Users
               </li>
           </ul>
           "
-      end
-
-      def sub_section_two; end
-
-      def sub_section_three;end
     end
+
+    def sub_section_two; end
+
+    def sub_section_three;end
   end
 end

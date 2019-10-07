@@ -12,7 +12,28 @@
   <% end %>
 
   <div class="field">
+    <%= label_tag 'Order Category:' %>
+    <%= select_tag 'categories', options_for_select(@categories_array) %>
+  </div>
 
+  <div class="field">
+    <%= label_tag 'Order Brand:' %>
+    <%= select_tag 'brands', options_for_select(@brands_array) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Order Product:' %>
+    <%= select_tag 'products', options_for_select(@products_array.uniq) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Order Amount:' %>
+    <%= text_field_tag '' %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Order Description:' %>
+    <%= text_field_tag '' %>
   </div>
 
   <div class="actions">
