@@ -15,9 +15,9 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= link_to 'Show', users_admin_category_path(category) %></td>
-        <td><%= link_to 'Edit', edit_users_admin_category_path(category) %></td>
-        <td><%= link_to 'Destroy', users_admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_category_path(category) %></td>
+        <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
+        <td><%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </tbody>
@@ -25,6 +25,6 @@
 
   <br>
 
-  <%= link_to 'New Category', new_users_admin_category_path %>
+  <%= link_to 'New Category', new_admin_category_path %>
 
 </main>

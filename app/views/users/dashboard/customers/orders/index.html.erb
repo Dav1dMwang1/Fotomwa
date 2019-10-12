@@ -30,9 +30,9 @@
           <td><%= convert_seconds(order_details.processing_time) %></td>
 
         <% end %>
-        <td><%= link_to 'Show', users_customers_order_path(order) %></td>
-        <td><%= link_to 'Edit', edit_users_customers_order_path(order) %></td>
-        <td><%= link_to 'Destroy', users_customers_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', customers_order_path(order) %></td>
+        <td><%= link_to 'Edit', edit_customers_order_path(order) %></td>
+        <td><%= link_to 'Delete', customers_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </tbody>
@@ -40,6 +40,6 @@
 
   <br>
 
-  <%= link_to 'New Order', new_users_customers_order_path %>
+  <%= link_to 'New Order', new_customers_order_path %>
 
 </main>

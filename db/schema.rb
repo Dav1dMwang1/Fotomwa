@@ -41,18 +41,10 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
+    t.json "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.bigint "order_id"
-    t.string "photo_type"
-    t.string "photo_size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_photos_on_order_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -77,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
   create_table "users", force: :cascade do |t|
     t.string "uid", limit: 50, default: "", null: false
     t.string "provider", limit: 500, default: "", null: false
+    t.string "avatar"
     t.string "first_name"
     t.string "last_name"
     t.string "email"

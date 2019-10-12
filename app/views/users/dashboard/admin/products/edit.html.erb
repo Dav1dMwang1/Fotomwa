@@ -3,7 +3,7 @@
 
   <%= render 'form', product: @product %>
 
-  <%= link_to 'Show', @product %> |
-  <%= link_to 'Back', users_admin_product_path %>
+  <%= link_to 'Show', admin_product_path(@product) %> |
+  <%= link_to 'Back', admin_products_path %>
 
 </main>

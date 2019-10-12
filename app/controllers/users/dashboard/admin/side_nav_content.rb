@@ -16,22 +16,22 @@ module AdminSideNavContent
           <li class='uk-parent'>
           <a href='#'><span></span>Categories</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#{users_admin_categories_path}'>All Categories</a></li>
-          <li><a href='#{new_users_admin_category_path}'>New Category</a></li>
+          <li><a href='#{admin_categories_path}'>All Categories</a></li>
+          <li><a href='#{new_admin_category_path}'>New Category</a></li>
           </ul>
               </li>
           <li class='uk-parent'>
           <a href='#'><span></span>Brands</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#{users_admin_brands_path}'>All Brands</a></li>
-          <li><a href='#{new_users_admin_brand_path}'>New Brand</a></li>
+          <li><a href='#{admin_brands_path}'>All Brands</a></li>
+          <li><a href='#{new_admin_brand_path}'>New Brand</a></li>
           </ul>
               </li>
           <li class='uk-parent'>
           <a href='#'><span></span>Products</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#{users_admin_products_path}'>All Products</a></li>
-          <li><a href='#{new_users_admin_product_path}'>New Product</a></li>
+          <li><a href='#{admin_products_path}'>All Products</a></li>
+          <li><a href='#{new_admin_product_path}'>New Product</a></li>
           </ul>
               </li>
           </ul>

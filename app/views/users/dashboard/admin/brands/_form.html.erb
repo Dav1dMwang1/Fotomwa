@@ -1,4 +1,4 @@
-<%= form_for(:brand, local: true) do |form| %>
+<%= form_for [:admin, @brand], local: true do |form| %>
   <% if @brand.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this user from being saved:</h2>

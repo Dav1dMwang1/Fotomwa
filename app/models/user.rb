@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :orders
+  has_many :orders, dependent: :nullify
+
+  mount_uploader :avatar, AvatarUploader
 
   devise :confirmable, :database_authenticatable, :lockable, :registerable, :recoverable, :rememberable, :timeoutable,
          :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]

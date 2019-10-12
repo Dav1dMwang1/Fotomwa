@@ -11,21 +11,22 @@ Rails.application.routes.draw do
     get '/', to: 'homepage#home'
   end
 
-  root to: 'users/dashboard/dashboard#index'
+  root to: 'users/dashboard#index'
   # User routes
-  namespace :users do
+  scope module: :users do
     # Dashboard Views
-    scope module: 'dashboard' do
-      get '', to: 'dashboard#index'
+    get 'users', to: 'dashboard#index'
+    scope module: :dashboard do
+      # Admin
+      get 'admin', to: 'admin_dashboard#index'
       namespace :admin do
-        root to: 'admin_dashboard#index'
         resources :brands,  :products,  :categories
       end
+
+      # Customer
+      get 'customers', to: 'customer_dashboard#index'
       namespace :customers do
-        root to: 'customer_dashboard#index'
-        resources :orders do
-          # resource :photos
-        end
+        resources :orders
       end
     end
   end

@@ -1,10 +1,11 @@
 # TODO setup the Orders Form, then set up the android app
+require './app/controllers/users/dashboard/customers/orders_modules'
 module Users
   module Dashboard
     module Customers
       class OrdersController < CustomerDashboardController
         before_action :set_order, only: [:show, :edit, :update, :destroy]
-        include OrdersHelper
+        include OrdersHelper, OrdersModule
         attr_reader :categories_array, :brands_array, :products_array
 
         # GET /orders
@@ -23,9 +24,7 @@ module Users
         def new
           @order = Order.new
           @order_product = OrderProduct.new
-          @brands_array = model_array(@brands_array = [], Brand.all)
-          @products_array = model_array(@products_array = [], Product.all)
-          @categories_array = model_array(@categories_array = [], Category.all)
+          instance_factors
         end
 
         # GET /orders/1/edit
@@ -39,8 +38,8 @@ module Users
 
           respond_to do |format|
             if @order.save
-              format.html { redirect_to @order, notice: 'Order was successfully created.' }
-              format.json { render :show, status: :created, location: @order }
+              format.html { redirect_to customer_orders_url, notice: 'Order was successfully created.' }
+              format.json { render :show, status: :created, location: customer_orders_path }
             else
               format.html { render :new }
               format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -53,8 +52,8 @@ module Users
         def update
           respond_to do |format|
             if @order.update(order_params)
-              format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-              format.json { render :show, status: :ok, location: @order }
+              format.html { redirect_to customer_orders_url, notice: 'Order was successfully updated.' }
+              format.json { render :show, status: :ok, location: customer_orders_path }
             else
               format.html { render :edit }
               format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -67,7 +66,7 @@ module Users
         def destroy
           @order.destroy
           respond_to do |format|
-            format.html { redirect_to user_customer_order_url, notice: 'Order was successfully destroyed.' }
+            format.html { redirect_to customer_orders_url, notice: 'Order was successfully destroyed.' }
             format.json { head :no_content }
           end
         end
@@ -87,14 +86,7 @@ module Users
         # Never trust parameters from the scary internet, only allow the white list through.
         # TODO change params
         def order_params
-          params.require(:order).permit(:name)
-        end
-
-        def model_array(models_array, model)
-          model.each do |model_instance|
-            models_array.push(model_instance.name)
-          end
-          models_array
+          params.require(:order).permit(:category, :brand, :product, :amount, :description, {images: []}, :remove_image)
         end
       end
     end

@@ -32,8 +32,8 @@ module Users
 
           respond_to do |format|
             if @category.save
-              format.html { redirect_to @category, notice: 'Category was successfully created.' }
-              format.json { render :show, status: :created, location: @category }
+              format.html { redirect_to admin_categories_url, notice: 'Category was successfully created.' }
+              format.json { render :show, status: :created, location: admin_categories_path }
             else
               format.html { render :new }
               format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -46,8 +46,8 @@ module Users
         def update
           respond_to do |format|
             if @category.update(category_params)
-              format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-              format.json { render :show, status: :ok, location: @category }
+              format.html { redirect_to admin_categories_url, notice: 'Category was successfully updated.' }
+              format.json { render :show, status: :ok, location: admin_categories_path }
             else
               format.html { render :edit }
               format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ module Users
         def destroy
           @category.destroy
           respond_to do |format|
-            format.html { redirect_to user_admin_category_url, notice: 'Category was successfully destroyed.' }
+            format.html { redirect_to admin_categories_url, notice: 'Category was successfully destroyed.' }
             format.json { head :no_content }
           end
         end

@@ -49,7 +49,16 @@
     <% end %>
   </p>
 
-  <%= link_to 'Edit', edit_users_customers_order_path(@order) %> |
-  <%= link_to 'Back', users_customers_orders_path %>
+  <p>
+    <strong>Order Image(s):</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= image_tag order_detail.image_url.thumb.url%>
+    <% end %>
+  </p>
+
+  <%= link_to 'Edit', edit_customers_order_path(@order) %> |
+  <%= link_to 'Back', customers_orders_path %>
 
 </main>

@@ -35,9 +35,16 @@ gem 'bcrypt', '~> 3.1.7'
 # HMAC encoding and decoding
 gem 'jwt'
 # Image Compression
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'piet'
 gem 'image_optim'
-gem 'mini_magick'
+gem 'mini_magick', '~> 4.3'
+# Google Cloud Storage
+gem 'google-api-client'
+gem 'google-cloud-storage'
+gem 'fog-core', '2.1.0'
+gem 'fog-google'
+gem 'mime-types'
 
 # Social SignIn
 # Use Devise for authentication

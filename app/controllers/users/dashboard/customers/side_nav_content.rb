@@ -1,3 +1,4 @@
+# TODO add something unique between Order Progress and Order History
 module CustomerSideNavContent
   def sub_section_one
     "
@@ -28,9 +29,9 @@ module CustomerSideNavContent
           <li class='uk-parent'>
           <a href='#'><span class='fotomwa_icons'></span>Orders</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#'>Purchase Order</a></li>
-          <li><a href='#'>Order Progress</a></li>
-          <li><a href='#'>Order History</a></li>
+          <li><a href='#{new_customers_order_path}'>Purchase Order</a></li>
+          <li><a href='#{customers_orders_path}'>Order Progress</a></li>
+          <li><a href='#{customers_orders_path}'>Order History</a></li>
           </ul>
               </li>
           <li class='uk-parent'>
