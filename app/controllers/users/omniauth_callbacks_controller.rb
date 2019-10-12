@@ -10,12 +10,12 @@ module Users
       if @user.persisted?
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
-        # redirect_to '/users/customers'
-        # flash[:success] = 'Successful Login Through Google OAuth!'
+        flash[:success] = 'Successful Login Through Google OAuth!'
+        redirect_to '/users'
       else
         session['devise.google_data'] = request.env['omniauth.auth']
-        # flash[:error] = 'There was a problem signing you in through Google. Please register or try signing in later.'
-        redirect_to root_path
+        flash[:error] = 'There was a problem signing you in through Google. Please register or try signing in later.'
+        # redirect_to root_path
       end
     end
 
@@ -24,12 +24,12 @@ module Users
       if @user.persisted?
         sign_in @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
+        flash[:success] = 'Successful Login Through Facebook OAuth!'
         redirect_to '/users'
-        # flash[:success] = 'Successful Login Through Facebook OAuth!'
       else
         session['devise.google_data'] = request.env['omniauth.auth']
-        # flash[:error] = 'There was a problem signing you in through Facebook. Please register or try signing in later.'
-        redirect_to root_path
+        flash[:error] = 'There was a problem signing you in through Facebook. Please register or try signing in later.'
+        # redirect_to root_path
       end
     end
 
@@ -41,10 +41,10 @@ module Users
       super
     end
 
-    # GET|POST /users/auth/twitter/callback
+    # GET|POST /user/auth/twitter/callback
     def failure
       super
-      # flash[:error] = 'There was a problem signing you in. Please register or try signing in later.'
+      flash[:error] = 'There was a problem signing you in. Please register or try signing in later.'
       # redirect_to root_path
     end
 

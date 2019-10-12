@@ -1,12 +1,12 @@
-<% if current_user %>
-    Logged In as <%= current_user.email %>. <%= link_to "Log Out", users_logout_path %>
-    <%= current_user.attributes.each do |k, v| %>
-      <b><%= k %></b> <%= v %> <br>
-    <% end %>
-  <% else %>
-    <%= link_to "Sign Up", new_user_path %>
-    <%= link_to "Log In", users_login_path %>
-  <% end %>
+<%# if current_user %>
+<!--    Logged In as <%#= current_user.email %>. <%#= link_to "Log Out", users_logout_path %>-->
+    <%#= current_user.attributes.each do |k, v| %>
+<!--      <b><%#= k %></b> <%#= v %> <br>-->
+    <%# end %>
+  <%# else %>
+    <%#= link_to "Sign Up", new_user_path %>
+    <%#= link_to "Log In", users_login_path %>
+  <%# end %>
 
 <p id="notice"><%= notice %></p>
 
@@ -31,4 +31,4 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', user_path %>
+<%= link_to 'Back', users_path %>

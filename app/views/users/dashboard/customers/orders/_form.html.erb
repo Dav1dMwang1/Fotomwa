@@ -1,0 +1,52 @@
+<%= form_for [:customers, @order], local: true, multipart: true do |form| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag :category, 'Order Category:' %>
+    <%= select_tag :category, options_for_select(@categories_array) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :brand, 'Order Brand:' %>
+    <%= select_tag :brand, options_for_select(@brands_array) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :product, 'Order Product:' %>
+    <%= select_tag :product, options_for_select(@products_array.uniq) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :amount, 'Order Amount:' %>
+    <%= text_field_tag :amount %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :description, 'Order Description:' %>
+    <%= text_field_tag :description %>
+  </div>
+
+  <div class="field">
+    <%#= label_tag 'Order Photos:' %>
+    <%#= file_field_tag 'image_url' %>
+    <% @order.images.each do |image| %>
+      <%= hidden_field :order, :images, multiple: true, value: image.identifier %>
+    <% end %>
+    <%= form.label :images, 'Order Photos:' %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

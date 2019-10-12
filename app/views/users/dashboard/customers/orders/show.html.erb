@@ -1,0 +1,64 @@
+<main class="uk-width-expand uk-position-relative">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Order Category:</strong>
+  </p>
+  <p>
+    <%= @category_details.name %>
+  </p>
+
+  <p>
+    <strong>Order Brand:</strong>
+  </p>
+  <p>
+    <%= @brand_details.name %>
+  </p>
+
+  <p>
+    <strong>Order Product:</strong>
+  </p>
+  <p>
+    <%= @product_details.name %>
+  </p>
+
+  <p>
+    <strong>Order Amount:</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= order_detail.amount%>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Order Description:</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= order_detail.description%>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Time to Process Order:</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= convert_seconds(order_detail.processing_time)%>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Order Image(s):</strong>
+  </p>
+  <p>
+    <% @order_details.each do |order_detail| %>
+      <%= image_tag order_detail.image_url.thumb.url%>
+    <% end %>
+  </p>
+
+  <%= link_to 'Edit', edit_customers_order_path(@order) %> |
+  <%= link_to 'Back', customers_orders_path %>
+
+</main>

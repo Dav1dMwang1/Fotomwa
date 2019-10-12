@@ -102,7 +102,10 @@
                     <a class="uk-navbar-item" href="#">
                       <div style="color: #111111">
                         <%= image_tag('users/dashboard/user.png', size: "30x30", class: "uk-border-circle uk-margin-small-right", alt: "Joe or Jane Doe") %>
-                        <span class="uk-text-middle">User Name</span>
+                        <span class="uk-text-middle">
+<!--                        ><%#= current_user.first_name + " " + current_user.last_name %>-->
+                        User Name
+                        </span>
                       </div>
                     </a>
                     <div class="uk-navbar-dropdown">

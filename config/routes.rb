@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   # Devise routes
   devise_for :users,
@@ -10,14 +11,25 @@ Rails.application.routes.draw do
     get '/', to: 'homepage#home'
   end
 
+  root to: 'users/dashboard#index'
   # User routes
-  root to: 'dashboard/dashboard#index'
-  namespace :users do
+  scope module: :users do
     # Dashboard Views
-    get '', to: 'dashboard/dashboard#index'
-    get 'customers', to: 'dashboard/customers/customer_dashboard#customer', as: :customer_dashboard
-    get 'admin', to: 'dashboard/admin/admin_dashboard#admin', as: :admin_dashboard
-    resources :orders
+    get 'users', to: 'dashboard#index'
+    scope module: :dashboard do
+      # Admin
+      get 'admin', to: 'admin_dashboard#index'
+      namespace :admin do
+        resources :brands,  :products,  :categories
+      end
+
+      # Customer
+      get 'customers', to: 'customer_dashboard#index'
+      namespace :customers do
+        resources :orders
+      end
+    end
   end
 
+mount Sidekiq::Web => '/sidekiq'
 end

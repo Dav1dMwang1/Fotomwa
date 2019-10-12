@@ -59,4 +59,17 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # CarrierWave
+  CarrierWave.configure do |config|
+    config.ignore_integrity_errors = false
+    config.ignore_processing_errors = false
+    config.ignore_download_errors = false
+    # TODO, add Cloud storage options
+    # config.fog_credentials = {
+    #     provider: 'Google',
+    #     google_storage_access_key_id: 'Google',
+    #     google_storage_secret_access_key: 'Google',
+    # }
+  end
 end

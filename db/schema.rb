@@ -10,30 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_120234) do
+ActiveRecord::Schema.define(version: 2019_10_02_063504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.integer "amount"
+    t.string "description"
+    t.integer "processing_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "order_no"
-    t.string "order_type"
-    t.integer "price"
-    t.string "instructions"
-    t.time "processing_time"
+    t.json "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.bigint "order_id"
-    t.string "photo_type"
-    t.string "photo_size"
+  create_table "products", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "brand_id"
+    t.string "name"
+    t.integer "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_photos_on_order_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -44,25 +66,15 @@ ActiveRecord::Schema.define(version: 2019_09_21_120234) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
-  create_table "test_auths", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "uid", limit: 50, default: "", null: false
     t.string "provider", limit: 500, default: "", null: false
+    t.string "avatar"
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "phone"
-    t.boolean "staff"
+    t.string "user_role", default: "Customer"
     t.string "token"
     t.boolean "expires"
     t.integer "expires_at"
@@ -90,4 +102,9 @@ ActiveRecord::Schema.define(version: 2019_09_21_120234) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "categories"
 end

@@ -1,12 +1,8 @@
 class CreateOrders < ActiveRecord::Migration[5.2]
   def change
     create_table :orders do |t|
-      t.belongs_to :user
-      t.integer :order_no
-      t.string :order_type
-      t.integer :price
-      t.string :instructions
-      t.time :processing_time
+      t.belongs_to :user, index: { unique: false }, foreign_key: true
+      t.json :images
       t.timestamps
     end
   end

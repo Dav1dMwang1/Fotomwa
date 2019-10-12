@@ -22,25 +22,38 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# Queueing, Caching and Compression
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis'
+gem 'redis-rails'
+gem 'redis-namespace'
+gem 'redis-rack-cache'
+# Sidekiq for background
+gem 'sidekiq'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # HMAC encoding and decoding
 gem 'jwt'
+# Image Compression
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+gem 'piet'
+gem 'image_optim'
+gem 'mini_magick', '~> 4.3'
+# Google Cloud Storage
+gem 'google-api-client'
+gem 'google-cloud-storage'
+gem 'fog-core', '2.1.0'
+gem 'fog-google'
+gem 'mime-types'
 
 # Social SignIn
 # Use Devise for authentication
 gem 'devise', ">= 4.7.1"
-# Use Omniauth Facebook plugin
+# Use FacebookOauth plugin
 gem 'omniauth-facebook'
-# Use Omniauth Github plugin
-# gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
-# Use Omniauth Google plugin
-gem 'omniauth-google-oauth2', '~> 0.2.2'
-# Use Omniauth Twitter plugin
-# gem 'omniauth-twitter', '~> 1.2', '>= 1.2.1'
-#
+# Use GoogleOauth2 plugin
+gem 'omniauth-google-oauth2'
+gem 'omniauth-oauth2'
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store'
 
