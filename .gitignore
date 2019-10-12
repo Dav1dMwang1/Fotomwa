@@ -35,3 +35,6 @@
 
 # Google Oauth ID and Secret
 /config/beauty_secrets.yml
+
+# Sidekiq
+/config/sidekiq.yml
