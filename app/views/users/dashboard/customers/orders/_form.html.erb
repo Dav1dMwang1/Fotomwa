@@ -12,33 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= label_tag :category, 'Order Category:' %>
-    <%= select_tag :category, options_for_select(@categories_array) %>
+    <%= form.label :brand_id, 'Type of Brand:' %>
+    <%= select_tag(:brand_id, option_groups_from_collection_for_select(Category.order(:name), :brands, :name, :id, :name), include_blank: 'Select Order Brand') %>
   </div>
 
   <div class="field">
-    <%= label_tag :brand, 'Order Brand:' %>
-    <%= select_tag :brand, options_for_select(@brands_array) %>
+    <%= form.label :product_ids, 'Order Product:' %>
+    <%= select_tag(:product_ids, option_groups_from_collection_for_select(Brand.order(:name), :products, :name, :id, :name), include_blank: 'Select Order Product') %>
   </div>
 
   <div class="field">
-    <%= label_tag :product, 'Order Product:' %>
-    <%= select_tag :product, options_for_select(@products_array.uniq) %>
+    <%= form.label :amount, 'Order Amount:' %>
+    <%= number_field_tag :amount %>
   </div>
 
   <div class="field">
-    <%= label_tag :amount, 'Order Amount:' %>
-    <%= text_field_tag :amount %>
-  </div>
-
-  <div class="field">
-    <%= label_tag :description, 'Order Description:' %>
+    <%= form.label :description, 'Order Description:' %>
     <%= text_field_tag :description %>
   </div>
 
   <div class="field">
-    <%#= label_tag 'Order Photos:' %>
-    <%#= file_field_tag 'image_url' %>
     <% @order.images.each do |image| %>
       <%= hidden_field :order, :images, multiple: true, value: image.identifier %>
     <% end %>

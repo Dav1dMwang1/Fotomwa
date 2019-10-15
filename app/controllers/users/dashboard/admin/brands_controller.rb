@@ -7,7 +7,6 @@ module Users
         # GET /brands
         # GET /brands.json
         def index
-          @all_content = dashboard_content
           @brands = Brand.all
         end
 

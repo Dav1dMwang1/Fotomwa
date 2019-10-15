@@ -7,8 +7,8 @@ module OrdersModule
   end
 
   def instance_factors
-    @brands_array = model_array(@brands_array = [], Brand.all)
-    @products_array = model_array(@products_array = [], Product.all)
-    @categories_array = model_array(@categories_array = [], Category.all)
+    @brands_array = model_array(@brands_array = [], Brand.order(:name))
+    @products_array = model_array(@products_array = [], Product.order(:name))
+    @categories_array = model_array(@categories_array = [], Category.order(:name))
   end
 end

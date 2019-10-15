@@ -11,7 +11,6 @@ module Users
         # GET /orders
         # GET /orders.json
         def index
-          @all_content = dashboard_content
           @orders = Order.all
         end
 
@@ -86,7 +85,7 @@ module Users
         # Never trust parameters from the scary internet, only allow the white list through.
         # TODO change params
         def order_params
-          params.require(:order).permit(:category, :brand, :product, :amount, :description, {images: []}, :remove_image)
+          params.require(:order).permit(:products, :amount, :description, {images: []}, :remove_image)
         end
       end
     end

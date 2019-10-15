@@ -10,9 +10,9 @@ module Users
     # Reroutes to the correct user dashboard
     def index
       if current_user.user_role.eql?('Customer')
-        redirect_to users_customers_root_path
+        redirect_to customers_path
       elsif current_user.user_role.eql?('Administrator')
-        redirect_to users_admin_root_path
+        redirect_to admin_path
       else
         redirect_to root_path
       end
