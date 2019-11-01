@@ -38,3 +38,6 @@
 
 # Sidekiq
 /config/sidekiq.yml
+
+# The Images
+/public/uploads

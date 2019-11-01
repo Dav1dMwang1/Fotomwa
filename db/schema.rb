@@ -16,13 +16,17 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
   enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
+    t.bigint "category_id"
     t.string "name"
+    t.integer "processing_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_brands_on_category_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.integer "processing_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
     t.bigint "product_id"
     t.integer "amount"
     t.string "description"
+    t.string "status"
     t.integer "processing_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,14 +53,14 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.bigint "category_id"
     t.bigint "brand_id"
     t.string "name"
     t.integer "unit_price"
+    t.integer "processing_time"
+    t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -75,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
     t.string "email"
     t.string "phone"
     t.string "user_role", default: "Customer"
+    t.boolean "paparazzi", default: false
     t.string "token"
     t.boolean "expires"
     t.integer "expires_at"
@@ -102,9 +108,9 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "brands", "categories"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "brands"
-  add_foreign_key "products", "categories"
 end

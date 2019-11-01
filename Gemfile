@@ -22,6 +22,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+gem 'rails-ujs'
+
+# jQuery
+gem 'jquery-rails'
+
 # Queueing, Caching and Compression
 # Use Redis adapter to run Action Cable in production
 gem 'redis'
@@ -34,11 +40,13 @@ gem 'sidekiq'
 gem 'bcrypt', '~> 3.1.7'
 # HMAC encoding and decoding
 gem 'jwt'
+
 # Image Compression
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+# gem 'carrierwave-imageoptimizer', git: 'https://github.com/jtescher/carrierwave-imageoptimizer.git'
 gem 'piet'
 gem 'image_optim'
-gem 'mini_magick', '~> 4.3'
+
 # Google Cloud Storage
 gem 'google-api-client'
 gem 'google-cloud-storage'
@@ -49,11 +57,14 @@ gem 'mime-types'
 # Social SignIn
 # Use Devise for authentication
 gem 'devise', ">= 4.7.1"
+
 # Use FacebookOauth plugin
 gem 'omniauth-facebook'
+
 # Use GoogleOauth2 plugin
 gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2'
+
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store'
 
@@ -61,7 +72,7 @@ gem 'activerecord-session_store'
 gem 'will_paginate', '~> 3.1.0'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

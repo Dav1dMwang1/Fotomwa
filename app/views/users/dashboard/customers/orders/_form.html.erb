@@ -12,38 +12,52 @@
   <% end %>
 
   <div class="field">
-    <%= label_tag :category, 'Order Category:' %>
-    <%= select_tag :category, options_for_select(@categories_array) %>
+    <%= form.label :brand_id, 'Type of Brand:' %>
+    <%= select_tag(:brand_id, option_groups_from_collection_for_select(Category.order(:name), :brands, :name, :id, :name), include_blank: 'Select Order Brand') %>
   </div>
 
   <div class="field">
-    <%= label_tag :brand, 'Order Brand:' %>
-    <%= select_tag :brand, options_for_select(@brands_array) %>
+    <%= form.label :product_id, 'Order Product:' %>
+    <%= select_tag(:product_id, option_groups_from_collection_for_select(Brand.order(:name), :products, :name, :id, :name), include_blank: 'Select Order Product') %>
   </div>
 
   <div class="field">
-    <%= label_tag :product, 'Order Product:' %>
-    <%= select_tag :product, options_for_select(@products_array.uniq) %>
+    <%= form.label :amount, 'Order Amount:' %>
+    <%= number_field_tag :amount %>
   </div>
 
   <div class="field">
-    <%= label_tag :amount, 'Order Amount:' %>
-    <%= text_field_tag :amount %>
-  </div>
-
-  <div class="field">
-    <%= label_tag :description, 'Order Description:' %>
+    <%= form.label :description, 'Order Description:' %>
     <%= text_field_tag :description %>
   </div>
 
+<!--  Image upload-->
   <div class="field">
-    <%#= label_tag 'Order Photos:' %>
-    <%#= file_field_tag 'image_url' %>
-    <% @order.images.each do |image| %>
-      <%= hidden_field :order, :images, multiple: true, value: image.identifier %>
+    <% if @order.images? %>
+      <ul>
+        <% @order.images.each do |image| %>
+          <li><%= link_to(image_tag(image.thumb.url, alt: 'Image'), image.url, target: '_blank') %></li>
+        <% end %>
+      </ul>
     <% end %>
+    <%# @order.images.each do |image| %>
+      <%#= hidden_field :order, :images, multiple: true, value: image.identifier %>
+    <%# end %>
     <%= form.label :images, 'Order Photos:' %>
     <%= form.file_field :images, multiple: true %>
+    <%= form.hidden_field :images_cache %>
+    <% if @order.images? %>
+      <%= image_tag(@order.images.thumb.url) %>
+      <div>
+        <%= label_tag :remove_image do %>
+          Remove Image
+          <%= form.check_box :remove_image %>
+        <% end %>
+      </div>
+    <% end %>
+    <label>Or Image URL:</label>
+    <%= image_tag(@order.images_url) if @order.images? %>
+    <%= text_field_tag :remote_images_url %>
   </div>
 
   <div class="actions">

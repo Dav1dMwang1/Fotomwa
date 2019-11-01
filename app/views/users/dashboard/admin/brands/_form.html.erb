@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :category_id, 'Category Type:' %>
+    <%= form.select(:category_id, options_from_collection_for_select(Category.order(:name), :id, :name), include_blank: 'Select Order Category') %>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>

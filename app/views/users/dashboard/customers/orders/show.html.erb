@@ -2,17 +2,11 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>Order Category:</strong>
-  </p>
-  <p>
-    <%= @category_details.name %>
-  </p>
-
-  <p>
-    <strong>Order Brand:</strong>
+    <strong>Order Category Brand:</strong>
   </p>
   <p>
     <%= @brand_details.name %>
+    <%= @category_details.name %>
   </p>
 
   <p>
@@ -53,9 +47,7 @@
     <strong>Order Image(s):</strong>
   </p>
   <p>
-    <% @order_details.each do |order_detail| %>
-      <%= image_tag order_detail.image_url.thumb.url%>
-    <% end %>
+    <%= image_tag(@order.images[0].thumb.url) %>
   </p>
 
   <%= link_to 'Edit', edit_customers_order_path(@order) %> |

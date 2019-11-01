@@ -1,3 +1,4 @@
+require './app/controllers/users/custom_mailer'
 # frozen_string_literal: true
 module Users
   class RegistrationsController < Devise::RegistrationsController
