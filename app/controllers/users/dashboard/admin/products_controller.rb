@@ -1,12 +1,10 @@
-# TODO, work on how to link up with the other models (Category and Brand), when creating a product
-require './app/controllers/users/dashboard/admin/products_module'
+# require './app/controllers/users/dashboard/admin/admin_module'
 module Users
   module Dashboard
     module Admin
       class ProductsController < AdminDashboardController
         before_action :set_product, only: [:show, :edit, :update, :destroy]
-        attr_reader :categories_hash, :brands_hash
-        include ProductsModule
+        # include AdminModule
 
         # GET /products
         # GET /products.json
@@ -22,7 +20,7 @@ module Users
         # GET /products/new
         def new
           @product = Product.new
-          instance_factors
+          # instance_factors
         end
 
         # GET /products/1/edit
@@ -77,7 +75,7 @@ module Users
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def product_params
-          params.require(:product).permit(:category_id, :brand_id, :name, :unit_price)
+          params.require(:product).permit(:brand_id, :name, :unit_price)
         end
       end
     end

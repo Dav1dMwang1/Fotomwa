@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :product_ids, 'Order Product:' %>
-    <%= select_tag(:product_ids, option_groups_from_collection_for_select(Brand.order(:name), :products, :name, :id, :name), include_blank: 'Select Order Product') %>
+    <%= form.label :product_id, 'Order Product:' %>
+    <%= select_tag(:product_id, option_groups_from_collection_for_select(Brand.order(:name), :products, :name, :id, :name), include_blank: 'Select Order Product') %>
   </div>
 
   <div class="field">
@@ -31,12 +31,33 @@
     <%= text_field_tag :description %>
   </div>
 
+<!--  Image upload-->
   <div class="field">
-    <% @order.images.each do |image| %>
-      <%= hidden_field :order, :images, multiple: true, value: image.identifier %>
+    <% if @order.images? %>
+      <ul>
+        <% @order.images.each do |image| %>
+          <li><%= link_to(image_tag(image.thumb.url, alt: 'Image'), image.url, target: '_blank') %></li>
+        <% end %>
+      </ul>
     <% end %>
+    <%# @order.images.each do |image| %>
+      <%#= hidden_field :order, :images, multiple: true, value: image.identifier %>
+    <%# end %>
     <%= form.label :images, 'Order Photos:' %>
     <%= form.file_field :images, multiple: true %>
+    <%= form.hidden_field :images_cache %>
+    <% if @order.images? %>
+      <%= image_tag(@order.images.thumb.url) %>
+      <div>
+        <%= label_tag :remove_image do %>
+          Remove Image
+          <%= form.check_box :remove_image %>
+        <% end %>
+      </div>
+    <% end %>
+    <label>Or Image URL:</label>
+    <%= image_tag(@order.images_url) if @order.images? %>
+    <%= text_field_tag :remote_images_url %>
   </div>
 
   <div class="actions">

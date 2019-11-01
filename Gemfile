@@ -43,6 +43,7 @@ gem 'jwt'
 
 # Image Compression
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+# gem 'carrierwave-imageoptimizer', git: 'https://github.com/jtescher/carrierwave-imageoptimizer.git'
 gem 'piet'
 gem 'image_optim'
 

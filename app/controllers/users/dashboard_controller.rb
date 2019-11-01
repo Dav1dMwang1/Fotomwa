@@ -2,8 +2,9 @@ module Users
   class DashboardController < ApplicationController
     layout 'dashboard/application'
 
-    # before_action :authenticate_user!
-    # before_action :user_signed_in?
+    before_action :set_content
+    before_action :authenticate_user!
+    before_action :user_signed_in?
 
     attr_writer :all_content
 
@@ -16,6 +17,10 @@ module Users
       else
         redirect_to root_path
       end
+    end
+
+    def set_content
+      @all_content = dashboard_content
     end
 
     def dashboard_content

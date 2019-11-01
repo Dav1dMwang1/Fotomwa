@@ -6,6 +6,7 @@ class CreateOrderProducts < ActiveRecord::Migration[5.2]
 
       t.integer :amount
       t.string :description
+      t.string :status
       t.integer :processing_time
       t.timestamps
     end

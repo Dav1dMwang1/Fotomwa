@@ -12,13 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, options_for_select(@categories_array) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :brand_id %>
-    <%= form.select :brand_id, options_for_select(@brands_array) %>
+    <%= form.label :brand_id, 'Type of Brand:' %>
+    <%= form.select(:brand_id, option_groups_from_collection_for_select(Category.order(:name), :brands, :name, :id, :name), include_blank: 'Select Order Brand') %>
   </div>
 
   <div class="field">

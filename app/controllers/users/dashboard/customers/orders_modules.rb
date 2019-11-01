@@ -1,3 +1,4 @@
+# Does nothing important
 module OrdersModule
   def model_array(models_array, model)
     model.each do |model_instance|

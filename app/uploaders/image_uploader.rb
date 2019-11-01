@@ -5,6 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include Piet::CarrierWaveExtension
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -30,11 +31,27 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
-  process resize_to_fit: [800, 800]
   #
   # def scale(width, height)
   #   # do something
   # end
+
+  # Piet library optimizes images
+  process optimize: [{quality: 90}]
+  # process resize_to_limit: [640, 640]
+  process :custom_optimize
+
+  # Medium
+  version :medium do
+    process resize_to_limit: [300, 300]
+    process :custom_optimize
+  end
+
+  # Small
+  version :small do
+    process resize_to_limit: [200, 200]
+    process :custom_optimize
+  end
 
   # Create different versions of your uploaded files:
   version :thumb do
@@ -53,6 +70,20 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def content_type_blacklist
     %w(application/text application/json)
+  end
+
+  def mimetype
+    IO.popen(["file", "--brief", "--mime-type", path], in: :close, err: :close) { |io| io.read.chomp.sub(/image\//, "") }
+  end
+
+
+  def custom_optimize
+    case mimetype
+    when "png" then pngquant
+    when "jpeg", "gif" then optimize(quality: 90)
+    else
+      # type code here
+    end
   end
 
   # Override the filename of the uploaded files:

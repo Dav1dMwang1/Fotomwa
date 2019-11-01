@@ -22,10 +22,6 @@
     <%= favicon_link_tag asset_path('frontend/camera.png') %>
   </head>
   <body>
-  <div style="display: none">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
 
   <div class="uk-section-primary uk-light uk-preserve-color uk-hidden@m" data-uk-sticky>
       <nav class="uk-navbar" data-uk-navbar style="background: linear-gradient(90deg, rgba(255,159,0,1) 0%, rgba(241,120,0,1) 35%);">
@@ -103,8 +99,8 @@
                       <div style="color: #111111">
                         <%= image_tag('users/dashboard/user.png', size: "30x30", class: "uk-border-circle uk-margin-small-right", alt: "Joe or Jane Doe") %>
                         <span class="uk-text-middle">
-<!--                        ><%#= current_user.first_name + " " + current_user.last_name %>-->
-                        User Name
+                          <%#= "USER NAME" %>
+                          <%= current_user.first_name + " " + current_user.last_name %>
                         </span>
                       </div>
                     </a>

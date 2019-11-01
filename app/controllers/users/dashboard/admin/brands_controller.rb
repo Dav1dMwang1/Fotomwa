@@ -1,13 +1,16 @@
+# require './app/controllers/users/dashboard/admin/admin_module'
 module Users
   module Dashboard
     module Admin
       class BrandsController < AdminDashboardController
         before_action :set_brand, only: [:show, :edit, :update, :destroy]
+        # include AdminModule
 
         # GET /brands
         # GET /brands.json
         def index
           @brands = Brand.all
+          @categories = Category.all
         end
 
         # GET /brands/1
@@ -73,7 +76,7 @@ module Users
         # Never trust parameters from the scary internet, only allow the white list through.
         # TODO change params
         def brand_params
-          params.require(:brand).permit(:name)
+          params.require(:brand).permit(:category_id, :name)
         end
       end
     end
