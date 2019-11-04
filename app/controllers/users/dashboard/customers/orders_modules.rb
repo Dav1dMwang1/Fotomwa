@@ -12,4 +12,9 @@ module OrdersModule
     @products_array = model_array(@products_array = [], Product.order(:name))
     @categories_array = model_array(@categories_array = [], Category.order(:name))
   end
+
+  def processing_time(product_id)
+    product = Product.find(product_id)
+    product.processing_time + product.brand.processing_time + product.brand.category.processing_time
+  end
 end

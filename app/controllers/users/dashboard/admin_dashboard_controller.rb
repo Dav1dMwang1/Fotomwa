@@ -9,6 +9,7 @@ module Users
         render 'users/dashboard/admin/index'
       end
 
+      # TODO: Confirm if User is Admin and can only access the Admin Module
       def confirm_admin
         # unless current_user.user_role.eql?('Administrator')
           # render unauthorized page

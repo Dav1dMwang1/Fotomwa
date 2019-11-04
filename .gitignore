@@ -41,3 +41,6 @@
 
 # The Images
 /public/uploads
+
+Dumb for Redis DB
+dump.rdb

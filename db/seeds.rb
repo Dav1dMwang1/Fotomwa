@@ -1,3 +1,5 @@
+# TODO: Add function for adding the correct processing time
+# For Seeding Data into the Database
 # For Categories
 def seed_category(variable, array, time_array)
   if variable.count.equal?0

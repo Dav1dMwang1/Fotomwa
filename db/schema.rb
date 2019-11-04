@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_063504) do
     t.bigint "product_id"
     t.integer "amount"
     t.string "description"
-    t.string "status"
+    t.string "status", default: "Created"
     t.integer "processing_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
