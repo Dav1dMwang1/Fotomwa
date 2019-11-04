@@ -1,11 +1,12 @@
 # TODO setup the Orders Form, then set up the android app
 require './app/controllers/users/dashboard/customers/orders_modules'
+require './lib/FotoQueue/foto_queue'
 module Users
   module Dashboard
     module Customers
       class OrdersController < CustomerDashboardController
         before_action :set_order, only: [:show, :edit, :update, :destroy]
-        include OrdersHelper, OrdersModule
+        include OrdersHelper, OrdersModule, FotoQueue
         attr_reader :categories_array, :brands_array, :products_array
 
         # GET /orders
@@ -33,28 +34,32 @@ module Users
         # POST /orders.json
         def create
           @order = Order.new(order_params)
-          if @order.save
-            create_order_products#(@order)
-          else
-            respond_to do |format|
-              format.html { render :new }
-              format.json { render json: @order.errors, status: :unprocessable_entity }
+          processing_time = processing_time(order_detail_params[:product_id])
+          respond_to do |format|
+            if @order.save
+              order_details = order_detail_params.merge(order_id: @order.id, processing_time: processing_time).except(:images, :user_id).to_h
+              process_q(current_user.id, @order.id, order_details)
+              format.html { redirect_to customers_orders_path, notice: 'Order was successfully created.' }
+              format.json { render :show, status: :created, location: customers_orders_path }
+            else
+              format.html { render :new, notice: 'Order was Unsuccessfully created.' }
+              format.json { render json: order_detail.errors, status: :unprocessable_entity }
             end
           end
         end
 
-        def create_order_products
-          @order_detail = OrderProduct.new(order_detail_params.merge(order_id: Order.last.id).except(:images, :user_id))
-          respond_to do |format|
-            if @order_detail.save
-              format.html { redirect_to customers_orders_url, notice: 'Order was successfully created.' }
-              format.json { render :show, status: :created, location: customers_orders_path }
-            else
-              format.html { render :new, notice: 'Order was Unsuccessfully created.' }
-              format.json { render json: @order_detail.errors, status: :unprocessable_entity }
-            end
-          end
-        end
+        # def create_order_products
+        #   @order_detail = OrderProduct.new(order_detail_params.merge(order_id: Order.last.id).except(:images, :user_id))
+        #   respond_to do |format|
+        #     if @order_detail.save
+        #       format.html { redirect_to customers_orders_url, notice: 'Order was successfully created.' }
+        #       format.json { render :show, status: :created, location: customers_orders_path }
+        #     else
+        #       format.html { render :new, notice: 'Order was Unsuccessfully created.' }
+        #       format.json { render json: @order_detail.errors, status: :unprocessable_entity }
+        #     end
+        #   end
+        # end
 
         # PATCH/PUT /orders/1
         # PATCH/PUT /orders/1.json
@@ -96,7 +101,6 @@ module Users
         # TODO change params
         # Params for Order Products
         def order_detail_params
-
           params.permit(:product_id, :amount, :description, {images: []}, :remove_image, :images_cache).merge(user_id: current_user.id)
           # params.permit(:product_id, :amount, :description, {images: []}, :remove_image).merge(user_id: 1)
         end

@@ -19,6 +19,9 @@ Bundler.require(*Rails.groups)
 
 module Fotomwa
   class Application < Rails::Application
+    # Define Sidekiq Config
+    config.active_job.queue_adapter = :sidekiq
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 

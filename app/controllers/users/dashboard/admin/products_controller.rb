@@ -1,4 +1,3 @@
-# require './app/controllers/users/dashboard/admin/admin_module'
 module Users
   module Dashboard
     module Admin

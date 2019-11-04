@@ -41,10 +41,12 @@ module AdminSideNavContent
   def sub_section_three
     "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
-              <li class='uk-active'><a href='#'><span></span>Awaiting</a></li>
-          <li><a href='#'><span></span>To be Taken</a></li>
-          <li><a href='#'><span></span>To be Printed</a></li>
-          <li><a href='#'><span></span>Products</a></li>
+              <li class='uk-active'><a href='#{admin_order_reports_path}'><span></span>Orders State</a></li>
+          <li><a href='#{admin_reports_created_path}'><span></span>Created</a></li>
+          <li><a href='#{admin_reports_studio_path}'><span></span>To be Taken</a></li>
+          <li><a href='#{admin_reports_edits_path}'><span></span>In Edits</a></li>
+          <li><a href='#{admin_reports_prints_path}'><span></span>Processing</a></li>
+          <li><a href='#{admin_reports_complete_path}'><span></span>Complete</a></li>
           </ul>
           "
   end

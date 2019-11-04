@@ -21,6 +21,14 @@ Rails.application.routes.draw do
       get 'admin', to: 'admin_dashboard#index'
       namespace :admin do
         resources :brands,  :products,  :categories
+        get 'reports', to: 'reports#index', as: :order_reports
+        namespace 'reports' do
+          get 'created', as: :created
+          get 'editing', as: :edits
+          get 'printing', as: :prints
+          get 'studio', as: :studio
+          get 'complete', as: :complete
+        end
       end
 
       # Customer
