@@ -1,0 +1,60 @@
+<%= form_for [:admin, @user], local: true, html: { class: 'uk-form-stacked' } do |form| %>
+  <fieldset class="uk-fieldset" style="margin-bottom: 10px">
+    <% if @brand.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% @brand.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+<!--    Avatar/Profile Pic-->
+    <div class="uk-margin">
+      <%= form.label :avatar, 'Category Type:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+
+      </div>
+    </div>
+
+<!--    First Name-->
+    <div class="uk-margin">
+      <%= form.label :first_name, 'Name:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :first_name, class: 'uk-input', placeholder: 'First Name...' %>
+      </div>
+    </div>
+
+<!--    Last Name-->
+    <div class="uk-margin">
+      <%= form.label :last_name, 'Name:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :last_name, class: 'uk-input', placeholder: 'Last Name...' %>
+      </div>
+    </div>
+
+<!--    Email-->
+    <div class="uk-margin">
+      <%= form.label :email, 'Processing Time:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :email, class: 'uk-input', placeholder: 'Email Address...' %>
+      </div>
+    </div>
+
+<!--    Phone-->
+    <div class="uk-margin">
+      <%= form.label :phone, 'Processing Time:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :phone, class: 'uk-input', placeholder: 'Phone Number...' %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: 'uk-button uk-button-default' %>
+    </div>
+  </fieldset>
+<% end %>

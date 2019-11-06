@@ -1,56 +1,25 @@
-<main class="uk-width-expand uk-position-relative">
-  <p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-  <p>
-    <strong>Order Category Brand:</strong>
-  </p>
-  <p>
-    <%= @brand_details.name %>
-    <%= @category_details.name %>
-  </p>
+<dl class="uk-description-list uk-description-list-divider">
+  <dt>Order Category Brand:</dt>
+  <dd><%= @brand_details.name %> <%= @category_details.name %></dd>
+  <dt>Order Product:</dt>
+  <dd><%= @product_details.name %></dd>
+  <dt>Order Amount:</dt>
+  <dd><% @order_details.each { |order_detail| %> <%= order_detail.amount %> <% } %></dd>
+  <dt>Order Description:</dt>
+  <dd><% @order_details.each { |order_detail| %> <%= order_detail.description %> <% } %></dd>
+  <dt>Time to Process Order:</dt>
+  <dd><% @order_details.each { |order_detail| %> <%= convert_seconds(order_detail.processing_time) %> <% } %></dd>
+  <dt>Order Image(s):</dt>
+  <dd><% @order.images.each { |order_image| %> <%= image_tag(order_image.thumb.url) %> <% } %></dd>
+</dl>
 
-  <p>
-    <strong>Order Product:</strong>
-  </p>
-  <p>
-    <%= @product_details.name %>
-  </p>
-
-  <p>
-    <strong>Order Amount:</strong>
-  </p>
-  <p>
-    <% @order_details.each do |order_detail| %>
-      <%= order_detail.amount%>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Order Description:</strong>
-  </p>
-  <p>
-    <% @order_details.each do |order_detail| %>
-      <%= order_detail.description%>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Time to Process Order:</strong>
-  </p>
-  <p>
-    <% @order_details.each do |order_detail| %>
-      <%= convert_seconds(order_detail.processing_time)%>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Order Image(s):</strong>
-  </p>
-  <p>
-    <%= image_tag(@order.images[0].thumb.url) %>
-  </p>
-
-  <%= link_to 'Edit', edit_customers_order_path(@order) %> |
-  <%= link_to 'Back', customers_orders_path %>
-
-</main>
+<%= link_to image_tag('common/edit.png', size: '25x25'), edit_customers_order_path(@order), "uk-tooltip":"title: Edit Details; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), customers_orders_path, "uk-tooltip":"title: Back; delay: 500" %>

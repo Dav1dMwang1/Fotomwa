@@ -1,12 +1,15 @@
-<main class="uk-width-expand uk-position-relative">
-  <p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-  <p>
-    <strong>Category Name:</strong>
-    <%= @category.name %>
-  </p>
+<dl class="uk-description-list uk-description-list-divider">
+  <dt>Category Name:</dt>
+  <dd><%= @category.name %></dd>
+</dl>
 
-  <%= link_to 'Edit', edit_admin_category_path(@category) %> |
-  <%= link_to 'Back', admin_categories_path %>
-
-</main>
+<%= link_to image_tag('common/edit.png', size: '25x25'), edit_admin_category_path(@category), "uk-tooltip":"title: Edit Details; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_categories_path, "uk-tooltip":"title: Back; delay: 500" %>

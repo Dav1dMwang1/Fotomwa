@@ -1,45 +1,41 @@
-<main class="uk-width-expand uk-position-relative">
-  <p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-  <h1>Orders</h1>
+<h1>Orders</h1>
 
-  <table>
-    <thead>
+<table class="uk-table uk-table-hover uk-table-divider">
+  <thead>
+  <tr>
+    <th>Order ID</th>
+    <th>Amount</th>
+    <th>Description</th>
+    <th>Time Left (Hours)</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @orders.each do |order| %>
     <tr>
-      <th>Order ID</th>
-<!--      <th>Category</th>-->
-<!--      <th>Brand</th>-->
-<!--      <th>Product</th>-->
-      <th>Amount</th>
-      <th>Order Description</th>
-      <th>Time to Process (Hours)</th>
-      <th colspan="3"></th>
+      <td><%= order.id %></td>
+      <% order.order_products.each do |order_details| %>
+        <td><%= order_details.amount %></td>
+        <td><%= order_details.description %></td>
+        <td><%= convert_seconds(order_details.processing_time) %></td>
+
+      <% end %>
+      <td><%= link_to image_tag('common/view.png', size: '20x20'), customers_order_path(order), "uk-tooltip":"title: Show Details; delay: 500" %></td>
+      <td><%= link_to image_tag('common/edit.png', size: '20x20'), edit_customers_order_path(order), "uk-tooltip":"title: Edit Details; delay: 500" %></td>
+<!--      Only be able to delete Orders still in progress. A fee is charged to cancel the order if it has made it past the editing or studio taken phase-->
+<!--      <td><%#= link_to image_tag('common/delete.png', size: '20x20'), customers_order_path(order), method: :delete, data: { confirm: 'Are you sure?', "uk-tooltip":"title: Delete Order; delay: 500" } %></td>-->
     </tr>
-    </thead>
-
-    <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <% order.order_products.each do |order_details| %>
-<!--          <td><%#= 'Category' %></td>-->
-<!--          <td><%#= 'Brand' %></td>-->
-<!--          <td><%#= 'Product' %></td>-->
-          <td><%= order_details.amount %></td>
-          <td><%= order_details.description %></td>
-          <td><%= convert_seconds(order_details.processing_time) %></td>
-
-        <% end %>
-        <td><%= link_to 'Show', customers_order_path(order) %></td>
-        <td><%= link_to 'Edit', edit_customers_order_path(order) %></td>
-        <td><%= link_to 'Delete', customers_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Order', new_customers_order_path %>
-
-</main>
+  <% end %>
+  </tbody>
+</table>
+<%= pagination_links(@brands) %>
+<%= link_to "#{image_tag('common/add.png', size: '25x25')}".html_safe, new_customers_order_path, class: 'uk-link-heading', "uk-tooltip":"title: New Order; delay: 300" %>

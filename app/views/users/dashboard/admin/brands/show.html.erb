@@ -1,17 +1,17 @@
-<main class="uk-width-expand uk-position-relative">
-  <p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-  <p>
-    <strong>Category Name:</strong>
-    <%= @brand.category.name %>
-  </p>
+<dl class="uk-description-list uk-description-list-divider">
+  <dt>Category Name:</dt>
+  <dd><%= @brand.category.name %></dd>
+  <dt>Brand Name:</dt>
+  <dd><%= @brand.name %></dd>
+</dl>
 
-  <p>
-    <strong>Brand Name:</strong>
-    <%= @brand.name %>
-  </p>
-
-  <%= link_to 'Edit', edit_admin_brand_path(@brand) %> |
-  <%= link_to 'Back', admin_brands_path %>
-
-</main>
+<%= link_to image_tag('common/edit.png', size: '25x25'), edit_admin_brand_path(@brand), "uk-tooltip":"title: Edit Details; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_brands_path, "uk-tooltip":"title: Back; delay: 500" %>

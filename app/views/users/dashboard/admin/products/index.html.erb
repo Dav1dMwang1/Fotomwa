@@ -1,36 +1,31 @@
-<main class="uk-width-expand uk-position-relative">
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <h1>Products</h1>
+<h1>Products</h1>
 
-  <table>
-    <thead>
+<table class="uk-table uk-table-hover uk-table-divider">
+  <thead>
+  <tr>
+    <th>Category</th>
+    <th>Brand</th>
+    <th>Product</th>
+    <th>Unit Price (Ksh)</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @products.each do |product| %>
     <tr>
-      <th>Category</th>
-      <th>Brand</th>
-      <th>Product Name</th>
-      <th>Product Unit Price (Ksh)</th>
-      <th colspan="3"></th>
+      <td><%= product.brand.category.name %></td>
+      <td><%= product.brand.name %></td>
+      <td><%= product.name %></td>
+      <td><%= product.unit_price %></td>
+      <td><%= link_to image_tag('common/view.png', size: '20x20'), admin_product_path(product), "uk-tooltip":"title: Show Details; delay: 500" %></td>
+      <td><%= link_to image_tag('common/edit.png', size: '20x20'), edit_admin_product_path(product), "uk-tooltip":"title: Edit Details; delay: 500" %></td>
+      <td><%= link_to image_tag('common/delete.png', size: '20x20'), admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, "uk-tooltip":"title: Delete Product; delay: 500" %></td>
     </tr>
-    </thead>
-
-    <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.brand.category.name %></td>
-        <td><%= product.brand.name %></td>
-        <td><%= product.name %></td>
-        <td><%= product.unit_price %></td>
-        <td><%= link_to 'Show', admin_product_path(product) %></td>
-        <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
-        <td><%= link_to 'Delete', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Product', new_admin_product_path %>
-
-</main>
+  <% end %>
+  </tbody>
+</table>
+<%= pagination_links(@products) %>
+<%= link_to "#{image_tag('common/add.png', size: '25x25')}".html_safe, new_admin_product_path, class: 'uk-link-heading', "uk-tooltip":"title: New Product; delay: 300" %>

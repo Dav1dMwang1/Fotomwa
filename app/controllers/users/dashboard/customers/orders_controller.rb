@@ -1,18 +1,24 @@
-# TODO setup the Orders Form, then set up the android app
+# TODO: setup the Orders Form, then set up the android app
+# TODO: Only be able to delete Orders still in progress. A fee is charged to cancel the order if it has made it past the editing or studio taken phase
+# TODO: Fix the Edits Page for Mulitple Orders
 require './app/controllers/users/dashboard/customers/orders_modules'
 require './lib/FotoQueue/foto_queue'
 module Users
   module Dashboard
     module Customers
       class OrdersController < CustomerDashboardController
+        layout 'dashboard/order/application'
+
         before_action :set_order, only: [:show, :edit, :update, :destroy]
         include OrdersHelper, OrdersModule, FotoQueue
         attr_reader :categories_array, :brands_array, :products_array
+        skip_before_action :verify_authenticity_token
 
         # GET /orders
         # GET /orders.json
         def index
-          @orders = Order.all
+          # @orders = Order.all
+          @orders = Order.paginate(page: params[:page], per_page: 7)
         end
 
         # GET /orders/1

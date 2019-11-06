@@ -1,27 +1,21 @@
-<main class="uk-width-expand uk-position-relative">
-  <p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-  <p>
-    <strong>Product Category:</strong>
-    <%= @product.brand.category.name %>
-  </p>
+<dl class="uk-description-list uk-description-list-divider">
+  <dt>Product Category:</dt>
+  <dd><%= @product.brand.category.name %></dd>
+  <dt>Product Brand:</dt>
+  <dd><%= @product.brand.name %></dd>
+  <dt>Product Name:</dt>
+  <dd><%= @product.name %></dd>
+  <dt>Product Unit Price:</dt>
+  <dd><%= @product.unit_price %></dd>
+</dl>
 
-  <p>
-    <strong>Product Brand:</strong>
-    <%= @product.brand.name %>
-  </p>
-
-  <p>
-    <strong>Product Name:</strong>
-    <%= @product.name %>
-  </p>
-
-  <p>
-    <strong>Product Unit Price:</strong>
-    <%= @product.unit_price %>
-  </p>
-
-  <%= link_to 'Edit', edit_admin_product_path(@product) %> |
-  <%= link_to 'Back', admin_products_path %>
-
-</main>
+<%= link_to image_tag('common/edit.png', size: '25x25'), edit_admin_product_path(@product), "uk-tooltip":"title: Edit Details; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_products_path, "uk-tooltip":"title: Back; delay: 500" %>

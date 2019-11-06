@@ -1,9 +1,6 @@
-<main class="uk-width-expand uk-position-relative">
-  <h1>Editing Order</h1>
+<h1>Editing Order</h1>
 
-  <%= render 'form', order: @order %>
+<%= render 'form', order: @order %>
 
-  <%= link_to 'Show', customers_order_path(@order) %> |
-  <%= link_to 'Back', customers_order_path %>
-
-</main>
+<%= link_to image_tag('common/view.png', size: '25x25'), customers_order_path(@order), "uk-tooltip":"title: Show Details; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), customers_orders_path, "uk-tooltip":"title: Back; delay: 500" %>

@@ -41,7 +41,7 @@ module AdminSideNavContent
   def sub_section_three
     "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
-              <li class='uk-active'><a href='#{admin_order_reports_path}'><span></span>Orders State</a></li>
+              <li class='uk-active'><a href='#{admin_order_reports_path}'><span></span>Order Reports</a></li>
           <li><a href='#{admin_reports_created_path}'><span></span>Created</a></li>
           <li><a href='#{admin_reports_studio_path}'><span></span>To be Taken</a></li>
           <li><a href='#{admin_reports_edits_path}'><span></span>In Edits</a></li>

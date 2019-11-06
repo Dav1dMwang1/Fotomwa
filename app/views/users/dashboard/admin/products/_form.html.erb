@@ -1,32 +1,48 @@
-<%= form_for [:admin, @product], local: true do |form| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for [:admin, @product], local: true, html: { class: 'uk-form-stacked' } do |form| %>
+  <fieldset class="uk-fieldset" style="margin-bottom: 10px">
+    <% if @product.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="uk-margin">
+      <%= form.label :brand_id, 'Type of Brand:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.select(:brand_id, option_groups_from_collection_for_select(Category.order(:name), :brands, :name, :id, :name), { include_blank: 'Select Order Brand' }, { class: 'uk-select' }) %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :brand_id, 'Type of Brand:' %>
-    <%= form.select(:brand_id, option_groups_from_collection_for_select(Category.order(:name), :brands, :name, :id, :name), include_blank: 'Select Order Brand') %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :unit_price, 'Name:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :unit_price, class: 'uk-input', placeholder: 'Product Name...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :unit_price, 'Unit Price:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :unit_price, class: 'uk-input', placeholder: 'Product Unit Price...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :unit_price %>
-    <%= form.text_field :unit_price %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :processing_time, 'Processing Time:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :processing_time, class: 'uk-input', placeholder: 'Processing Time...' %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit class: 'uk-button uk-button-default' %>
+    </div>
+  </fieldset>
 <% end %>

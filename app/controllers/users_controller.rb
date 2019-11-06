@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
   # GET /user
   # GET /user.json
-  def index
-    @users = User.all
-  end
+  # def index
+  #   @users = User.all
+  # end
 
   # GET /user/1
   # GET /user/1.json

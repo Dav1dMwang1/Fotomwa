@@ -1,66 +1,122 @@
-<%= form_for [:customers, @order], local: true, multipart: true do |form| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for [:customers, @order], local: true, multipart: true, html: { class: 'uk-form-stacked' } do |form| %>
+  <fieldset class="uk-fieldset" style="margin-bottom: 10px">
+    <% if @order.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h2><%= pluralize(@order.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :brand_id, 'Type of Brand:' %>
-    <%= select_tag(:brand_id, option_groups_from_collection_for_select(Category.order(:name), :brands, :name, :id, :name), include_blank: 'Select Order Brand') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :product_id, 'Order Product:' %>
-    <%= select_tag(:product_id, option_groups_from_collection_for_select(Brand.order(:name), :products, :name, :id, :name), include_blank: 'Select Order Product') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount, 'Order Amount:' %>
-    <%= number_field_tag :amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description, 'Order Description:' %>
-    <%= text_field_tag :description %>
-  </div>
-
-<!--  Image upload-->
-  <div class="field">
-    <% if @order.images? %>
-      <ul>
-        <% @order.images.each do |image| %>
-          <li><%= link_to(image_tag(image.thumb.url, alt: 'Image'), image.url, target: '_blank') %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    <%# @order.images.each do |image| %>
-      <%#= hidden_field :order, :images, multiple: true, value: image.identifier %>
-    <%# end %>
-    <%= form.label :images, 'Order Photos:' %>
-    <%= form.file_field :images, multiple: true %>
-    <%= form.hidden_field :images_cache %>
-    <% if @order.images? %>
-      <%= image_tag(@order.images.thumb.url) %>
-      <div>
-        <%= label_tag :remove_image do %>
-          Remove Image
-          <%= form.check_box :remove_image %>
-        <% end %>
+        <ul>
+          <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
-    <label>Or Image URL:</label>
-    <%= image_tag(@order.images_url) if @order.images? %>
-    <%= text_field_tag :remote_images_url %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :brand_id, 'Type of Brand:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= select_tag(:brand_id, option_groups_from_collection_for_select(Category.order(:name), :brands, :name, :id, :name), { include_blank: 'Select Order Brand', class: 'uk-select' }) %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :product_id, 'Order Product:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= select_tag(:product_id, option_groups_from_collection_for_select(Brand.order(:name), :products, :name, :id, :name), { include_blank: 'Select Order Product', class: 'uk-select' }) %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :amount, 'Order Amount:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= number_field_tag :amount, 'Order Amount...', class: 'uk-input' %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :description, 'Order Description:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= text_field_tag :description, 'Order Description...', class: 'uk-input' %>
+      </div>
+    </div>
+
+    <div class="uk-margin">
+      <%= label_tag :purpose, 'Edit or Print:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <label><%= radio_button_tag :purpose, 'print', true, class: 'uk-radio' %>Print Only</label><br>
+        <label><%= radio_button_tag :purpose, 'both', true, class: 'uk-radio' %>Edit and Print</label>
+      </div>
+    </div>
+
+<!--  Image upload-->
+    <div class="uk-margin">
+      <%= form.label :images, 'Order Photos Upload:', { class: 'uk-form-label' } %>
+      <div class="js-upload uk-placeholder uk-text-center">
+        <span><%= image_tag('common/file-upload.png', size: '30x30') %></span>
+        <span class="uk-text-middle">Attach Image by dropping them here or</span>
+        <div uk-form-custom>
+          <%= form.file_field :images, multiple: true %>
+          <span class="uk-link">selecting one</span>
+        </div>
+        <% if @order.images? %>
+          <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide">
+            <% @order.images.each do |image| %>
+              <div>
+                <a class="uk-inline" href="<%=image_path(image.url)%>" data-caption="Order Image">
+                  <%= image_tag(image.thumb.url, alt: 'Image') %>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: 'uk-button uk-button-default' %>
+    </div>
+  </fieldset>
 <% end %>
+
+<script>
+
+    $(function(){
+
+        var progressbar = $("#progressbar"),
+            bar         = progressbar.find('.uk-progress-bar'),
+            settings    = {
+
+                action: '/', // upload url
+
+                allow : '*.(jpg|jpeg|gif|png)', // allow only images
+
+                loadstart: function() {
+                    bar.css("width", "0%").text("0%");
+                    progressbar.removeClass("uk-hidden");
+                },
+
+                progress: function(percent) {
+                    percent = Math.ceil(percent);
+                    bar.css("width", percent+"%").text(percent+"%");
+                },
+
+                allcomplete: function(response) {
+
+                    bar.css("width", "100%").text("100%");
+
+                    setTimeout(function(){
+                        progressbar.addClass("uk-hidden");
+                    }, 250);
+
+                    alert("Upload Completed")
+                }
+            };
+
+        var select = UIkit.uploadSelect($("#upload-select"), settings),
+            drop   = UIkit.uploadDrop($("#upload-drop"), settings);
+    });
+
+</script>

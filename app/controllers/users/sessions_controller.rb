@@ -18,6 +18,11 @@ module Users
       super
     end
 
+    def failure
+      render status: 401,
+             json: { success: false, info: "Login Failed", data: {} }
+    end
+
     protected
 
     # If you have extra params to permit, append them to the sanitizer.

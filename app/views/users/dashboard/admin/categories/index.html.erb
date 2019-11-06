@@ -1,30 +1,31 @@
-<main class="uk-width-expand uk-position-relative">
-  <p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-  <h1>Categories</h1>
+<h1>Categories</h1>
 
-  <table>
-    <thead>
+<table class="uk-table uk-table-hover uk-table-divider">
+  <thead>
+  <tr>
+    <th>Category Name</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @categories.each do |category| %>
     <tr>
-      <th>Category Name</th>
-      <th colspan="3"></th>
+      <td><%= category.name %></td>
+      <td><%= link_to image_tag('common/view.png', size: '20x20'), admin_category_path(category), "uk-tooltip":"title: Show Details; delay: 500" %></td>
+      <td><%= link_to image_tag('common/edit.png', size: '20x20'), edit_admin_category_path(category), "uk-tooltip":"title: Edit Details; delay: 500" %></td>
+      <td><%= link_to image_tag('common/delete.png', size: '20x20'), admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, "uk-tooltip":"title: Delete Category; delay: 500" %></td>
     </tr>
-    </thead>
-
-    <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', admin_category_path(category) %></td>
-        <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
-        <td><%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Category', new_admin_category_path %>
-
-</main>
+  <% end %>
+  </tbody>
+</table>
+<%= pagination_links(@categories) %>
+<%= link_to "#{image_tag('common/add.png', size: '25x25')}".html_safe, new_admin_category_path, class: 'uk-link-heading', "uk-tooltip":"title: New Category; delay: 300" %>

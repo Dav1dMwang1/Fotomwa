@@ -7,7 +7,7 @@ module Users
         # GET /categories
         # GET /categories.json
         def index
-          @categories = Category.all
+          @categories = Category.paginate(page: params[:page], per_page: 7)
         end
 
         # GET /categories/1

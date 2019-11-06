@@ -1,16 +1,18 @@
-# require './app/controllers/users/dashboard/admin/admin_module'
+# require './app/controllers/users/dashboard/custom_renderer'
+# TODO: Put all Module in the lib folder
 module Users
   module Dashboard
     module Admin
       class BrandsController < AdminDashboardController
         before_action :set_brand, only: [:show, :edit, :update, :destroy]
-        # include AdminModule
+        # include CustomRenderer
 
         # GET /brands
         # GET /brands.json
         def index
-          @brands = Brand.all
-          @categories = Category.all
+          # @brands = Brand.all
+          # @categories = Category.all
+          @brands = Brand.paginate(page: params[:page], per_page: 7)
         end
 
         # GET /brands/1

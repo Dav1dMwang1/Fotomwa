@@ -1,27 +1,41 @@
-<%= form_for [:admin, @brand], local: true do |form| %>
-  <% if @brand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for [:admin, @brand], local: true, html: { class: 'uk-form-stacked' } do |form| %>
+  <fieldset class="uk-fieldset" style="margin-bottom: 10px">
+    <% if @brand.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @brand.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+          <% @brand.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="uk-margin">
+      <%= form.label :category_id, 'Category Type:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.select(:category_id, options_from_collection_for_select(Category.order(:name), :id, :name), { include_blank: 'Select Order Category' }, { class: 'uk-select' }) %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :category_id, 'Category Type:' %>
-    <%= form.select(:category_id, options_from_collection_for_select(Category.order(:name), :id, :name), include_blank: 'Select Order Category') %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :name, 'Name:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :name, class: 'uk-input', placeholder: 'Brand Name...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :processing_time, 'Processing Time:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :processing_time, class: 'uk-input', placeholder: 'Processing Time...' %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit class: 'uk-button uk-button-default' %>
+    </div>
+  </fieldset>
 <% end %>

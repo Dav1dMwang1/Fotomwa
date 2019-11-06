@@ -1,8 +1,5 @@
-<main class="uk-width-expand uk-position-relative">
-  <h1>New Product</h1>
+<h1>New Product</h1>
 
-  <%= render 'form', products: @products %>
+<%= render 'form', products: @products %>
 
-  <%= link_to 'Back', admin_products_path %>
-
-</main>
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_products_path, "uk-tooltip":"title: Back; delay: 500" %>

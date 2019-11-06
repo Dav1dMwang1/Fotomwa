@@ -1,3 +1,4 @@
+# TODO: Edit page for Products
 module Users
   module Dashboard
     module Admin
@@ -8,7 +9,8 @@ module Users
         # GET /products
         # GET /products.json
         def index
-          @products = Product.all
+          # @products = Product.all
+          @products = Product.paginate(page: params[:page], per_page: 7)
         end
 
         # GET /products/1

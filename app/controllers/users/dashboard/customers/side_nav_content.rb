@@ -29,6 +29,7 @@ module CustomerSideNavContent
           <li class='uk-parent'>
           <a href='#'><span class='fotomwa_icons'></span>Orders</a>
           <ul class='uk-nav-sub'>
+          <li><a href='#{customers_orders_path}'>All Orders</a></li>
           <li><a href='#{new_customers_order_path}'>Purchase Order</a></li>
           <li><a href='#{customers_orders_path}'>Order Progress</a></li>
           <li><a href='#{customers_orders_path}'>Order History</a></li>

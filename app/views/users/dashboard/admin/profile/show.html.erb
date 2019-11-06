@@ -1,0 +1,19 @@
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<dl class="uk-description-list uk-description-list-divider">
+  <dt>User Name:</dt>
+  <dd><%= @user.first_name + " " + @user.last_name %></dd>
+  <dt>User Email:</dt>
+  <dd><%= @user.email %></dd>
+  <dt>Phone Number:</dt>
+  <dd><%= @user.phone %></dd>
+</dl>
+
+<%= link_to image_tag('common/edit.png', size: '25x25'), edit_admin_brand_path(@user), "uk-tooltip":"title: Edit Details; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_brands_path, "uk-tooltip":"title: Back; delay: 500" %>

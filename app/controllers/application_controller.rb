@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
   # skip_before_filter :verify_authenticity_token
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || users_path
+  end
+
+  def after_sign_up_path_for(resource)
+    stored_location_for(resource) || users_path
+  end
+
   private
 
   def cors_set_access_control_headers

@@ -4,4 +4,7 @@ class OrderProduct < ApplicationRecord
 
   validates_presence_of :order
   validates_presence_of :product
+
+  validates :processing_time, numericality: { only_integer: true }
+  validates :amount, numericality: { only_integer: true }
 end
