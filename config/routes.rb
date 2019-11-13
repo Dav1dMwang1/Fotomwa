@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       get 'admin', to: 'admin_dashboard#index'
       namespace :admin do
         # All Users in the System
-        get 'sys_users', to: 'profiles#index', as: :sys_users
+        get 'sys_users', to: 'profiles#index', as: :sys_users 
         # User Profile
         namespace :profile do
           get '/:id', to: 'profiles#show'
