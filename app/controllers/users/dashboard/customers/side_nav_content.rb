@@ -7,8 +7,8 @@ module CustomerSideNavContent
           <li class='uk-parent'>
           <a href='#'><span></span>Profile</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#'>Account</a></li>
-          <li><a href='#'>Security</a></li>
+          <li><a href='#{customers_profile_path(current_user.id)}'>Account Details</a></li>
+          <li><a href='#{edit_customers_profile_path(current_user.id)}'>Edit Account</a></li>
           </ul>
               </li>
           <li class='uk-parent'>

@@ -56,7 +56,7 @@ module AdminSideNavContent
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Business Information</a></li>
           <li><a href='#'><span></span>Stock Information</a></li>
-          <li><a href='#'><span></span>Staff Information</a></li>
+          <li><a href='#{admin_sys_users_path}'><span></span>User Information</a></li>
           </ul>
           "
   end

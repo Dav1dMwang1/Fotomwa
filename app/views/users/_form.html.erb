@@ -1,47 +1,63 @@
-<%= form_with(model: @user, local: true) do |form| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_with(model: @user, local: true, html: { class: 'uk-form-stacked' }) do |form| %>
+  <fieldset class="uk-fieldset" style="margin-bottom: 10px">
+    <%# if @user.errors.any? %>
+<!--      <div id="error_explanation" class="uk-alert-danger" uk-alert>-->
+<!--        <a class="uk-alert-close" uk-close></a>-->
+<!--        <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>-->
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<!--        <ul>-->
+          <%# @user.errors.full_messages.each do |message| %>
+<!--            <li><%#= message %></li>-->
+          <%# end %>
+<!--        </ul>-->
+<!--      </div>-->
+    <%# end %>
+
+    <div class="uk-margin">
+      <%= form.label :first_name, 'First Name:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :first_name, class: 'uk-input', placeholder: 'First Name...' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :last_name, 'Last Name:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :last_name, class: 'uk-input', placeholder: 'Last Name...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :email, 'User Email:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :email, class: 'uk-input', placeholder: 'User Email...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :phone, 'User Phone:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.text_field :phone, class: 'uk-input', placeholder: 'User Phone...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :password, 'User Password:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.password_field :password, class: 'uk-input', placeholder: 'User Password...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+    <div class="uk-margin">
+      <%= form.label :password_confirmation, 'Password Confirmation:', { class: 'uk-form-label' } %>
+      <div class="uk-form-controls">
+        <%= form.password_field :password_confirmation, class: 'uk-input', placeholder: 'Password Confirmation...' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
+    <div class="actions">
+      <%= form.submit class: 'uk-button uk-button-default' %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  </fieldset>
 <% end %>

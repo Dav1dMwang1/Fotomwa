@@ -1,34 +1,32 @@
-<%# if current_user %>
-<!--    Logged In as <%#= current_user.email %>. <%#= link_to "Log Out", users_logout_path %>-->
-    <%#= current_user.attributes.each do |k, v| %>
-<!--      <b><%#= k %></b> <%#= v %> <br>-->
-    <%# end %>
-  <%# else %>
-    <%#= link_to "Sign Up", new_user_path %>
-    <%#= link_to "Log In", users_login_path %>
-  <%# end %>
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
 
-<p id="notice"><%= notice %></p>
+<div class="user-profile">
+  <%= image_tag('users/dashboard/user.png', class: "avatar") %>
+  <div class="username">User Name</div>
+<!--  <div class="bio">-->
+    <%#= @user.user_role %>
+<!--  </div>-->
+</div>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @user.first_name %>
-</p>
+<dl class="uk-description-list uk-description-list-divider">
+<!--  <dt class="user_profile">-->
+    <%#= image_tag('users/dashboard/user.png', class: "uk-border-circle uk-margin-small-right avatar") %>
+<!--  </dt>-->
+<!--  <dd class="user_name">User Name</dd>-->
+  <!--  <dd><%#= @user.first_name + " " + @user.last_name %></dd>-->
+  <dt>User Email:</dt>
+  <dd><%= @user.email %></dd>
+  <dt>Phone Number:</dt>
+  <dd><%= @user.phone %></dd>
+  <dt>User Type:</dt>
+  <dd><%= @user.user_role %></dd>
+</dl>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to image_tag('common/edit.png', size: '25x25'), edit_admin_profile_path(@user), "uk-tooltip":"title: Edit Admin Profile; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_path, "uk-tooltip":"title: Dashboard; delay: 500" %>

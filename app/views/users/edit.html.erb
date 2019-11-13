@@ -2,5 +2,5 @@
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', user_path %>
+<%= link_to image_tag('common/view.png', size: '25x25'), admin_profile_path(current_user.id), "uk-tooltip":"title: Show Profile; delay: 500" %> |
+<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_path, "uk-tooltip":"title: Dashboard; delay: 500" %>

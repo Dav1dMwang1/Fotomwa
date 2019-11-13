@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # resources :users
   scope module: :users do
     # User Settings
-    get 'profile', to: 'user#show', as: :user_profile
+    # get 'profile', to: 'user#show', as: :user_profile
     # Dashboard Views
     get 'users', to: 'dashboard#index'
     scope module: :dashboard do
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
         # All Users in the System
         get 'sys_users', to: 'profiles#index', as: :sys_users 
         # User Profile
-        namespace :profile do
-          get '/:id', to: 'profiles#show'
-        end
+        resources :profiles, only: [ :show, :edit, :destroy, :update ]
+        # get '/profile/:id', to: 'profiles#show', as: :profile
+        # get '/profile/:id/edit', to: 'profiles#edit', as: :edit_profile
         # Brands, Categories and Products
         resources :brands,  :products,  :categories
         # Reports
@@ -46,9 +46,8 @@ Rails.application.routes.draw do
       get 'customers', to: 'customer_dashboard#index'
       namespace :customers do
         # User Profile
-        namespace :profile do
-          get '/', to: 'profiles#show'
-        end
+        resources :profiles, only: [ :show, :edit, :destroy, :update ]
+        # get '/profile/:id', to: 'profiles#show', as: :profile
         # Order Making
         resources :orders
       end
