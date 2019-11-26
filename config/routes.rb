@@ -27,8 +27,6 @@ Rails.application.routes.draw do
         get 'sys_users', to: 'profiles#index', as: :sys_users 
         # User Profile
         resources :profiles, only: [ :show, :edit, :destroy, :update ]
-        # get '/profile/:id', to: 'profiles#show', as: :profile
-        # get '/profile/:id/edit', to: 'profiles#edit', as: :edit_profile
         # Brands, Categories and Products
         resources :brands,  :products,  :categories
         # Reports

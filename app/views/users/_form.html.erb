@@ -1,17 +1,18 @@
-<%= form_with(model: @user, local: true, html: { class: 'uk-form-stacked' }) do |form| %>
+<%#= form_for @user, url: admin_profile_path(@user), local: true, html: { class: 'uk-form-stacked' } do |form| %>
+<%= form_with(model: @user, url: admin_profile_path(@user), local: true, html: { class: 'uk-form-stacked' }) do |form| %>
   <fieldset class="uk-fieldset" style="margin-bottom: 10px">
-    <%# if @user.errors.any? %>
-<!--      <div id="error_explanation" class="uk-alert-danger" uk-alert>-->
-<!--        <a class="uk-alert-close" uk-close></a>-->
-<!--        <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>-->
+    <% if @user.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<!--        <ul>-->
-          <%# @user.errors.full_messages.each do |message| %>
-<!--            <li><%#= message %></li>-->
-          <%# end %>
-<!--        </ul>-->
-<!--      </div>-->
-    <%# end %>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <div class="uk-margin">
       <%= form.label :first_name, 'First Name:', { class: 'uk-form-label' } %>

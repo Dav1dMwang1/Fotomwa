@@ -74,6 +74,10 @@ gem 'will_paginate', '~> 3.1.0'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 
+# Generate Reports
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

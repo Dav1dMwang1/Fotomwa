@@ -1,6 +1,13 @@
 <h1>Editing User</h1>
 
 <%= render 'form', user: @user %>
+<%#= render 'form', current_user: current_user %>
+<!--User Name: <%#= current_user.first_name + " " + current_user.last_name %>-->
 
-<%= link_to image_tag('common/view.png', size: '25x25'), admin_profile_path(current_user.id), "uk-tooltip":"title: Show Profile; delay: 500" %> |
-<%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_path, "uk-tooltip":"title: Dashboard; delay: 500" %>
+<% if current_user.user_role.eql?('Customer') %>
+  <%= link_to image_tag('common/view.png', size: '25x25'), customers_profile_path(current_user.id), "uk-tooltip":"title: Show Profile; delay: 500" %> |
+  <%= link_to image_tag('common/back-arrow.png', size: '25x25'), customers_path, "uk-tooltip":"title: Dashboard; delay: 500" %>
+<% elsif current_user.user_role.eql?('Administrator') %>
+  <%= link_to image_tag('common/view.png', size: '25x25'), admin_profile_path(current_user.id), "uk-tooltip":"title: Show Profile; delay: 500" %> |
+  <%= link_to image_tag('common/back-arrow.png', size: '25x25'), admin_path, "uk-tooltip":"title: Dashboard; delay: 500" %>
+<% end %>
