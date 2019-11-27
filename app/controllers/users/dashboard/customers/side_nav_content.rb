@@ -1,5 +1,15 @@
 # TODO add something unique between Order Progress and Order History
 module CustomerSideNavContent
+  def dashboard_content
+    super +
+        "
+            <hr class='uk-hr uk-margin-remove'>
+          <div class='uk-tile uk-tile-xsmall'>
+            #{sub_section_four}
+          </div>
+          ".html_safe
+  end
+
   def sub_section_one
     "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
@@ -51,11 +61,19 @@ module CustomerSideNavContent
           <ul class='uk-nav-default  uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Photo Information</a></li>
               <li><a href='#'><span></span>Gallery</a></li>
+          </ul>
+          "
+  end
+
+  def sub_section_four
+    "
+          <ul class='uk-nav-default  uk-nav-parent-icon' data-uk-nav>
+              <li class='uk-active'><a href='#'><span></span>Legal Information</a></li>
               <li class='uk-parent'>
                 <a href='#'><span></span>Help</a>
                 <ul class='uk-nav-sub'>
                 <li><a href='#'>FAQ</a></li>
-                <li><a href='#'>Legal Agreements</a></li>
+                <li><a href='#{customers_legal_path}'>Legal Agreements</a></li>
                 </ul>
                     </li>
           </ul>

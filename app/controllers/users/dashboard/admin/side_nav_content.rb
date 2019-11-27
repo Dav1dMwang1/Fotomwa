@@ -57,6 +57,7 @@ module AdminSideNavContent
               <li class='uk-active'><a href='#'><span></span>Business Information</a></li>
           <li><a href='#'><span></span>Stock Information</a></li>
           <li><a href='#{admin_sys_users_path}'><span></span>User Information</a></li>
+          <li><a href='#{admin_legal_path}'><span></span>Legal Information</a></li>
           </ul>
           "
   end
