@@ -12,6 +12,17 @@ module AdminSideNavContent
   def sub_section_two
     "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
+              <li class='uk-active'><a href='#'><span></span>Business Information</a></li>
+          <li><a href='#{admin_orders_path}'><span></span>Orders</a></li>
+          <li><a href='#{admin_sys_users_path}'><span></span>User</a></li>
+          <li><a href='#'><span></span>Stock</a></li>
+          </ul>
+          "
+  end
+
+  def sub_section_three
+    "
+          <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Order Information</a></li>
           <li class='uk-parent'>
           <a href='#'><span></span>Categories</a>
@@ -38,7 +49,7 @@ module AdminSideNavContent
           "
   end
 
-  def sub_section_three
+  def sub_section_four
     "
           <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#{admin_order_reports_path}'><span></span>Order Reports</a></li>
@@ -47,17 +58,6 @@ module AdminSideNavContent
           <li><a href='#{admin_reports_edits_path}'><span></span>In Edits</a></li>
           <li><a href='#{admin_reports_prints_path}'><span></span>Processing</a></li>
           <li><a href='#{admin_reports_complete_path}'><span></span>Complete</a></li>
-          </ul>
-          "
-  end
-
-  def sub_section_four
-    "
-          <ul class='uk-nav-default uk-nav-parent-icon' data-uk-nav>
-              <li class='uk-active'><a href='#'><span></span>Business Information</a></li>
-          <li><a href='#'><span></span>Stock Information</a></li>
-          <li><a href='#{admin_sys_users_path}'><span></span>User Information</a></li>
-          <li><a href='#{admin_legal_path}'><span></span>Legal Information</a></li>
           </ul>
           "
   end

@@ -1,0 +1,58 @@
+<% unless notice.nil? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <h3>Notice</h3>
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<h1>Notifications</h1>
+
+<div class="uk-section uk-section-muted">
+  <div class="uk-container">
+    <ul uk-accordion>
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#">Order Messages</a>
+        <div class="uk-accordion-content">
+          <div class="uk-card uk-card-body">
+            <ol class="activity-feed">
+              <li class="feed-item">
+                <time class="date">Date</time>
+                <span class="text">Content</span>
+              </li>
+              <li class="feed-item">
+                <time class="date">Date</time>
+                <span class="text">Content</span>
+              </li>
+              <li class="feed-item">
+                <time class="date">Date</time>
+                <span class="text">Content</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#">Staff Notifications</a>
+        <div class="uk-accordion-content">
+          <div class="uk-card uk-card-body">
+            <ol class="activity-feed">
+              <li class="feed-item">
+                <time class="date">Date</time>
+                <span class="text">Content</span>
+              </li>
+              <li class="feed-item">
+                <time class="date">Date</time>
+                <span class="text">Content</span>
+              </li>
+              <li class="feed-item">
+                <time class="date">Date</time>
+                <span class="text">Content</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

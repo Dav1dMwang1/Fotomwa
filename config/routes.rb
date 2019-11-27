@@ -23,14 +23,14 @@ Rails.application.routes.draw do
       # Admin
       get 'admin', to: 'admin_dashboard#index'
       namespace :admin do
-        # All Users in the System
-        get 'sys_users', to: 'profiles#index', as: :sys_users 
         # User Profile
         resources :profiles, only: [ :show, :edit, :destroy, :update ]
         # Brands, Categories and Products
         resources :brands,  :products,  :categories
-        # Privacy and Terms & Conditions
-        get 'legal', to: 'legal#index', as: :legal
+        # All Users in the System
+        get 'sys_users', to: 'profiles#index', as: :sys_users
+        # All Orders in the System
+        get 'sys_orders', to: 'orders#index', as: :orders
         # Reports
         get 'reports', to: 'reports#index', as: :order_reports
         namespace 'reports' do
@@ -50,6 +50,17 @@ Rails.application.routes.draw do
         # get '/profile/:id', to: 'profiles#show', as: :profile
         # Order Making
         resources :orders
+        # Settings
+        namespace 'settings' do
+          get 'preferences', as: :preferences
+          get 'payments', as: :payments
+        end
+        # Gallery
+        get 'gallery', to: 'photos#index', as: :gallery
+        # Notifications
+        get 'notifications', to: 'notifications#index', as: :notification
+        # FAQs
+        get 'faqs', to: 'faqs#index', as: :faqs
         # Privacy and Terms & Conditions
         get 'legal', to: 'legal#index', as: :legal
       end

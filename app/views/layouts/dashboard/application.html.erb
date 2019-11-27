@@ -2,8 +2,6 @@
 <html>
   <head>
     <title>Fotomwa</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
 <!--    CSS-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -99,8 +97,8 @@
                       <div style="color: #111111">
                         <%= image_tag('users/dashboard/user.png', size: "30x30", class: "uk-border-circle uk-margin-small-right", alt: "Joe or Jane Doe") %>
                         <span class="uk-text-middle">
-                          <%= "USER NAME" %>
-                          <%#= current_user.first_name + " " + current_user.last_name %>
+                          <%#= "USER NAME" %>
+                          <%= current_user.first_name + " " + current_user.last_name %>
                         </span>
                       </div>
                     </a>
@@ -127,7 +125,7 @@
           <%= @all_content %>
           <hr class="uk-hr uk-margin-remove">
           <div class="uk-tile uk-tile-xsmall">
-            <p>Bottom of the Navigation. Remember to put the social Plug Ins.</p>
+            <p>Bottom of the Navigation.</p>
           </div>
         </div>
       </aside>

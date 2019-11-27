@@ -26,7 +26,7 @@
       <% order.order_products.each do |order_details| %>
         <td><%= order_details.amount %></td>
         <td><%= order_details.description %></td>
-        <td><%= convert_seconds(order_details.processing_time) %></td>
+        <td><%= calculate_time_left(order_details.processing_time, order_details.created_at) %></td>
 
       <% end %>
       <td><%= link_to image_tag('common/view.png', size: '20x20'), customers_order_path(order), "uk-tooltip":"title: Show Details; delay: 500" %></td>

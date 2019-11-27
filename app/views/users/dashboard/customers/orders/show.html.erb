@@ -16,7 +16,7 @@
   <dt>Order Description:</dt>
   <dd><% @order_details.each { |order_detail| %> <%= order_detail.description %> <% } %></dd>
   <dt>Time to Process Order:</dt>
-  <dd><% @order_details.each { |order_detail| %> <%= convert_seconds(order_detail.processing_time) %> <% } %></dd>
+  <dd><% @order_details.each { |order_detail| %> <%= calculate_time_left(order_detail.processing_time, order_detail.created_at) %> <% } %></dd>
   <dt>Order Image(s):</dt>
   <dd><% @order.images.each { |order_image| %> <%= image_tag(order_image.thumb.url) %> <% } %></dd>
 </dl>

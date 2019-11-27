@@ -24,8 +24,8 @@ module CustomerSideNavContent
           <li class='uk-parent'>
           <a href='#'><span></span>Settings</a>
           <ul class='uk-nav-sub'>
-          <li><a href='#'>Personal Information</a></li>
-          <li><a href='#'>Payments Information</a></li>
+          <li><a href='#{customers_settings_preferences_path}'>Preferences</a></li>
+          <li><a href='#{customers_settings_payments_path}'>Payments</a></li>
           </ul>
               </li>
           </ul>
@@ -45,13 +45,7 @@ module CustomerSideNavContent
           <li><a href='#{customers_orders_path}'>Order History</a></li>
           </ul>
               </li>
-          <li class='uk-parent'>
-          <a href='#'><span></span>Notifications</a>
-          <ul class='uk-nav-sub'>
-          <li><a href='#'>Contact Staff</a></li>
-          <li><a href='#'>Recent Order Updates</a></li>
-          </ul>
-              </li>
+          <li><a href='#{customers_notification_path}'><span></span>Notifications</a></li>
           </ul>
           "
   end
@@ -60,7 +54,7 @@ module CustomerSideNavContent
     "
           <ul class='uk-nav-default  uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Photo Information</a></li>
-              <li><a href='#'><span></span>Gallery</a></li>
+              <li><a href='#{customers_gallery_path}'><span></span>Gallery</a></li>
           </ul>
           "
   end
@@ -69,13 +63,8 @@ module CustomerSideNavContent
     "
           <ul class='uk-nav-default  uk-nav-parent-icon' data-uk-nav>
               <li class='uk-active'><a href='#'><span></span>Legal Information</a></li>
-              <li class='uk-parent'>
-                <a href='#'><span></span>Help</a>
-                <ul class='uk-nav-sub'>
-                <li><a href='#'>FAQ</a></li>
-                <li><a href='#{customers_legal_path}'>Legal Agreements</a></li>
-                </ul>
-                    </li>
+              <li><a href='#{customers_faqs_path}'>FAQ</a></li>
+              <li><a href='#{customers_legal_path}'>Legal Agreements</a></li>
           </ul>
           "
   end
