@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
-  skip_before_filter :verify_authenticity_token
   before_action :add_allow_credentials_headers, :cors_preflight_check
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :cors_set_access_control_headers
