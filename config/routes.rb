@@ -29,6 +29,8 @@ Rails.application.routes.draw do
         resources :profiles, only: [ :show, :edit, :destroy, :update ]
         # Brands, Categories and Products
         resources :brands,  :products,  :categories
+        # Privacy and Terms & Conditions
+        get 'legal', to: 'legal#index', as: :legal
         # Reports
         get 'reports', to: 'reports#index', as: :order_reports
         namespace 'reports' do
@@ -48,6 +50,8 @@ Rails.application.routes.draw do
         # get '/profile/:id', to: 'profiles#show', as: :profile
         # Order Making
         resources :orders
+        # Privacy and Terms & Conditions
+        get 'legal', to: 'legal#index', as: :legal
       end
     end
   end
