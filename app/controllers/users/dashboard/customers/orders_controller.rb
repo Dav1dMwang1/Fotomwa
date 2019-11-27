@@ -12,7 +12,6 @@ module Users
         before_action :set_order, only: [:show, :edit, :update, :destroy]
         include OrdersHelper, OrdersModule, FotoQueue
         attr_reader :categories_array, :brands_array, :products_array
-        skip_before_action :verify_authenticity_token
 
         # GET /orders
         # GET /orders.json
