@@ -2,8 +2,6 @@ module Users
   module Dashboard
     module Admin
       class CategoriesController < AdminDashboardController
-        skip_before_action :verify_authenticity_token
-        protect_from_forgery prepend: true
         before_action :set_category, only: [:show, :edit, :update, :destroy]
 
         # GET /categories

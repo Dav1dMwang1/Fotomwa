@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :add_allow_credentials_headers, :cors_preflight_check
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :cors_set_access_control_headers
+  protect_from_forgery prepend: true
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || users_path
