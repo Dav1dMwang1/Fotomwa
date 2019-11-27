@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception, prepend: true
+  skip_before_action :verify_authenticity_token
 
   before_action :add_allow_credentials_headers, :cors_preflight_check
   after_action :cors_set_access_control_headers
