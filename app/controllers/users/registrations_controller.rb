@@ -2,6 +2,7 @@ require './app/controllers/users/custom_mailer'
 # frozen_string_literal: true
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    layout 'dashboard/order/application'
     # before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
 

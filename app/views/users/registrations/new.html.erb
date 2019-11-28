@@ -1,29 +1,36 @@
-<h2>Sign up</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <fieldset class="uk-fieldset">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <legend class="uk-legend">Sign Up</legend>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="uk-margin field">
+      <%= f.label :email, {class: 'uk-form-label'} %>
+      <div class="uk-form-controls">
+        <%= f.email_field :email, class: 'uk-input', autofocus: true, autocomplete: "email", placeholder: 'Email' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="uk-margin field">
+      <%= f.label :password, {class: 'uk-form-label'} %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <div class="uk-form-controls">
+        <%= f.password_field :password, class: 'uk-input', autocomplete: "email", placeholder: 'Password' %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <div class="uk-margin field">
+      <%= f.label :password_confirmation, {class: 'uk-form-label'} %>
+      <div class="uk-form-controls">
+        <%= f.password_field :password_confirmation, class: 'uk-input', autocomplete: "email", placeholder: 'Password Confirmation' %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'uk-button uk-button-default' %>
+    </div>
+
+  </fieldset>
 <% end %>
-
 <%= render "users/shared/links" %>

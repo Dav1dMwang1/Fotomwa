@@ -5,11 +5,11 @@
 
 <!--    CSS-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'application', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag    'application', 'https://cdn.jsdelivr.net/npm/uikit@3/dist/css/uikit.min.css' %>
 <!--    JS-->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js' %>
-    <%= javascript_include_tag 'application', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js' %>
+    <%= javascript_include_tag 'application', 'https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1/SmoothScroll.min.js' %>
+    <%= javascript_include_tag 'application', 'https://cdn.jsdelivr.net/npm/uikit@3/dist/js/uikit.min.js' %>
 
     <%= favicon_link_tag asset_path('frontend/camera.png') %>
   </head>
@@ -20,16 +20,24 @@
     <p class="alert"><%= alert %></p>
   </div>
 
-  <div class="navigation">
-    <nav class="fotomwa_navbar">
-      <a href="#section_un">Welcome</a>
-      <a href="#section_deux">Services</a>
-      <a href="#section_trois">Contacts</a>
-      <div class="user_signin">
-        <a class="login_trigger" href="#" data-target="#login" data-toggle="modal">Sign In/Up</a>
-      </div>
-    </nav>
-  </div>
+    <div uk-sticky>
+      <nav class="uk-navbar-container">
+        <div class="uk-container uk-container-expand">
+          <div uk-navbar>
+
+            <ul class="uk-navbar-nav">
+              <li class="uk-active"><a href="#section_un">Welcome</a></li>
+              <li><a href="#section_deux">Services</a></li>
+              <li><a href="#section_trois">Contacts</a></li>
+              <li><a href="#section_deux"><button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-close-default">Sign In/Up</button></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
     <%= yield %>
+
+  </div>
   </body>
 </html>

@@ -1,16 +1,24 @@
-<h2>Resend confirmation instructions</h2>
-
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <fieldset class="uk-fieldset">
+    <legend class="uk-legend">Resend confirmation instructions</legend>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+    <div class="uk-margin field">
+      <%= f.label :email, {class: 'uk-form-label'} %>
+      <div class="uk-form-controls">
+        <%= f.email_field :email, class: 'uk-input', autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) , placeholder: 'Email' %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
+<!--    <div class="field">-->
+<!--      <%#= f.label :email %><br />-->
+      <%#= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+<!--    </div>-->
+
+    <div class="actions">
+      <%= f.submit "Resend confirmation instructions", class: 'uk-button uk-button-default' %>
+    </div>
+  </fieldset>
 <% end %>
 
 <%= render "users/shared/links" %>

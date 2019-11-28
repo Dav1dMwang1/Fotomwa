@@ -65,26 +65,13 @@
 
 //Login
 .login_popup {
-  .login_trigger {
-    font-weight: bold;
-    color: #fff;
-    background: linear-gradient(to bottom right, #766700, #C4AC00);
-    padding: 15px 30px;
-    border-radius: 30px;
-    position: relative;
-    top: 50%
-  }
-
   /*Modal*/
   .container {
     display: flex;
     flex-direction: column;
     width: 500px;
-    margin: auto;
-    padding: 10px 10px;
-    background: #f4f7f8;
-    border-radius: 8px;
-    box-shadow: 0 0 30px #444;
+    height: auto;
+    margin: 0;
     align-items: center;
     justify-content: center;
   }
@@ -98,7 +85,6 @@
     border-radius: 100%;
     width: 100px;
     height: 100px;
-    margin: 20px auto;
     border: 3px solid #27ceaf;
   }
 
