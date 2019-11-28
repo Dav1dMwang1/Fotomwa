@@ -43,7 +43,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       user_name:      'david.mwangi.john@gmail.com',#ENV['SENDMAIL_USERNAME'],
-      password:       'jubjmhsjicbshhdd',#ENV['SENDMAIL_PASSWORD'],
+      password:       'daIvdBarca2012',#ENV['SENDMAIL_PASSWORD'],
       domain:         'smtp.gmail.com',
       address:        'smtp.gmail.com',
       port:           '587',
