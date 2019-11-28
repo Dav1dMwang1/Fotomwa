@@ -49,7 +49,7 @@
                   <li><a href="#"><span class="uk-margin-small-right"></span>Profile</a></li>
                   <li><a href="#"><span class="uk-margin-small-right"></span>Settings</a></li>
                   <li class="uk-nav-divider"></li>
-                  <li><a href="#"><span class="uk-margin-small-right"></span>Logout</a></li>
+                  <li><%=link_to('Logout', destroy_user_session_path, method: :delete)%></li>
                 </ul>
               </div>
             </li>
@@ -107,7 +107,7 @@
                         <li><a href="#"><span></span>Profile</a></li>
                         <li><a href="#"><span></span>Settings</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#"><span></span>Logout</a></li>
+                        <li><%=link_to('Logout', destroy_user_session_path, method: :delete)%></li>
                       </ul>
                     </div>
                   </li>
